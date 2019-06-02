@@ -1,4 +1,4 @@
-webpackJsonp([15],{
+webpackJsonp([2],{
 
 /***/ 118:
 /***/ (function(module, exports) {
@@ -21,65 +21,13 @@ webpackEmptyAsyncContext.id = 118;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/about-us/about-us.page.module": [
-		293,
-		12
-	],
-	"../pages/book-a-time/book-a-time.page.module": [
-		294,
-		10
-	],
 	"../pages/contact/contact.page.module": [
-		295,
-		9
-	],
-	"../pages/home/home.page.module": [
-		296,
-		5
-	],
-	"../pages/login/login.page.module": [
-		297,
-		7
-	],
-	"../pages/plan/plan-list/plan-list.page.module": [
-		298,
-		3
-	],
-	"../pages/plan/plan-new/plan-new.page.module": [
-		299,
-		2
-	],
-	"../pages/product-editor/product-editor-list/product-editor.page.module": [
-		300,
-		8
-	],
-	"../pages/product-editor/product-editor-new/product-editor-new.page.module": [
-		301,
+		293,
 		1
 	],
-	"../pages/recipe/recipe-detail/recipe-detail.page.module": [
-		302,
-		6
-	],
-	"../pages/recipe/recipe-list/recipe-list.page.module": [
-		303,
-		11
-	],
-	"../pages/recipe/recipe-new/recipe-new.page.module": [
-		304,
-		14
-	],
-	"../pages/recipe/recipe-product/recipe-product.page.module": [
-		305,
+	"../pages/login/login.page.module": [
+		294,
 		0
-	],
-	"../pages/register/register.module": [
-		306,
-		13
-	],
-	"../pages/settings/settings.page.module": [
-		307,
-		4
 	]
 };
 function webpackAsyncContext(req) {
@@ -182,7 +130,7 @@ var ToastProvider = /** @class */ (function () {
     };
     ToastProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], ToastProvider);
     return ToastProvider;
 }());
@@ -192,6 +140,199 @@ var ToastProvider = /** @class */ (function () {
 /***/ }),
 
 /***/ 208:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_TITLE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_config__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__(106);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+
+
+
+
+
+
+
+/**
+ * Enums for menu titles.
+ *
+ * @export
+ * @enum {number}
+ */
+var MENU_TITLE;
+(function (MENU_TITLE) {
+    MENU_TITLE["LOGIN"] = "LOGIN";
+    MENU_TITLE["HOME"] = "HOME";
+    MENU_TITLE["BOOK_A_TIME"] = "BOOK_A_TIME";
+    MENU_TITLE["BOOKED_TIMES"] = "BOOKED_TIMES";
+    MENU_TITLE["ABOUT_US"] = "ABOUT_US";
+    MENU_TITLE["CONTACT"] = "CONTACT";
+    MENU_TITLE["MESSAGES"] = "MESSAGES";
+    MENU_TITLE["LOGOUT"] = "LOGOUT";
+})(MENU_TITLE || (MENU_TITLE = {}));
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, statusBar, splashScreen, event, config, storage, translate) {
+        var _this = this;
+        this.event = event;
+        this.config = config;
+        this.storage = storage;
+        this.translate = translate;
+        /**
+         * Root page
+         *
+         * @type {*}
+         * @memberof MyApp
+         */
+        this.rootPage = 'LoginPage';
+        /**
+        * List of pages in logged in state
+        *
+        * @private
+        * @type {Array<SideMenuItem>}
+        * @memberof MyApp
+        */
+        this.userPages = [
+            { title: MENU_TITLE.LOGIN, component: 'LoginPage', icon: 'log-in' },
+            { title: MENU_TITLE.CONTACT, component: 'ContactPage', icon: 'phone-portrait' }
+        ];
+        /**
+          * List of pages in logged in state
+          *
+          * @private
+          * @type {Array<SideMenuItem>}
+          * @memberof MyApp
+          */
+        this.adminPages = [
+            { title: MENU_TITLE.LOGOUT, component: 'LoginPage', icon: 'log-out' }
+        ];
+        /**
+         * Possible languages to select.
+         *
+         * @type {[LanguageModel]}
+         * @memberof MyApp
+         */
+        this.languages = [];
+        /**
+         * State of pharmacy select dropdown.
+         *
+         * @type {boolean}
+         * @memberof MyApp
+         */
+        this.dropdownOpened = false;
+        /**
+         * Methods after login was completed.
+         *
+         * @private
+         * @memberof MyApp
+         */
+        this.loginEventComplete = function () {
+            _this.pages = _this.adminPages.map(function (x) { return Object.assign({}, x); });
+            // if (this.storage.getLoggedUser().admin) {
+            // this.pages.pop();
+            // this.pages.push(this.adminPages[0]);
+            // this.pages.push(this.loggedInPages[this.loggedInPages.length - 1]);
+            // }
+        };
+        /**
+         * Methods after logout was completed.
+         *
+         * @private
+         * @memberof MyApp
+         */
+        this.logoutEventComplete = function () {
+            _this.pages = _this.userPages;
+            _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, false);
+            _this.storage.clearConfig(_this.config.loginConfig.loggedInUser);
+        };
+        translate.setDefaultLang('en');
+        this.selectedLanguage = { key: 'en', name: 'English' };
+        this.languages.push(this.selectedLanguage);
+        this.languages.push({ key: 'ro', name: 'Română' });
+        this.languages.push({ key: 'hu', name: 'Magyar' });
+        platform.ready().then(function () {
+            _this.pages = _this.userPages;
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            statusBar.styleDefault();
+            splashScreen.hide();
+            //Subscribing to login and logout events
+            _this.event.subscribe(_this.config.loginConfig.logoutEventKey, _this.logoutEventComplete);
+            _this.event.subscribe(_this.config.loginConfig.loggedInCompleteEventKey, _this.loginEventComplete);
+        });
+    }
+    /**
+     *  Visibilitychange event is removed on destroy.
+     *
+     * @memberof ChatPage
+     */
+    MyApp.prototype.ngOnDestroy = function () {
+        //Unsubscribing to login and logout events
+        this.event.unsubscribe(this.config.loginConfig.logoutEventKey, this.logoutEventComplete);
+        this.event.unsubscribe(this.config.loginConfig.loggedInCompleteEventKey, this.loginEventComplete);
+    };
+    /**
+     * Opens a page as root page
+     *
+     * @param {any} page
+     * @memberof MyApp
+     */
+    MyApp.prototype.openPage = function (page) {
+        if (page.component != this.nav.getActive().name) {
+            console.log('open page ', page);
+            if (page.title == MENU_TITLE.LOGOUT) {
+                this.event.publish(this.config.loginConfig.logoutEventKey);
+            }
+            this.nav.setRoot(page.component);
+        }
+    };
+    /**
+     * Method to use selected language.
+     *
+     * @param {*} language
+     * @memberof MyApp
+     */
+    MyApp.prototype.useLanguage = function (language) {
+        this.translate.use(language.key);
+        this.selectedLanguage = language;
+        this.dropdownOpened = false;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
+    ], MyApp.prototype, "nav", void 0);
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\dev\University-Microservices\University-Microservices\src\app\app.html"*/'<ion-split-pane>\n\n    <ion-menu [content]="content" *ngIf="pages?.length > 0">\n\n        <ion-content padding>\n\n            <ion-list>\n\n                <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n                    <ion-icon name="{{p.icon}}" item-start></ion-icon>\n\n                    <ion-badge *ngIf="p.badgeRight" color="{{p.badgeColor}}" item-end>{{p.badgeValue}}</ion-badge>\n\n                    {{\'menu.\' + p.title | translate}}\n\n                </button>\n\n\n\n            </ion-list>\n\n        </ion-content>\n\n    </ion-menu>\n\n\n\n    <ion-nav id="nav" [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>'/*ion-inline-end:"E:\dev\University-Microservices\University-Microservices\src\app\app.html"*/
+        }),
+        __param(4, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], Object, __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -465,579 +606,7 @@ var ProductProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 209:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_TITLE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_config__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__ = __webpack_require__(106);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-
-
-
-
-
-
-
-/**
- * Enums for menu titles.
- *
- * @export
- * @enum {number}
- */
-var MENU_TITLE;
-(function (MENU_TITLE) {
-    MENU_TITLE["LOGIN"] = "LOGIN";
-    MENU_TITLE["HOME"] = "HOME";
-    MENU_TITLE["BOOK_A_TIME"] = "BOOK_A_TIME";
-    MENU_TITLE["BOOKED_TIMES"] = "BOOKED_TIMES";
-    MENU_TITLE["ABOUT_US"] = "ABOUT_US";
-    MENU_TITLE["CONTACT"] = "CONTACT";
-    MENU_TITLE["MESSAGES"] = "MESSAGES";
-    MENU_TITLE["LOGOUT"] = "LOGOUT";
-})(MENU_TITLE || (MENU_TITLE = {}));
-var MyApp = /** @class */ (function () {
-    function MyApp(platform, statusBar, splashScreen, event, config, storage, translate) {
-        var _this = this;
-        this.event = event;
-        this.config = config;
-        this.storage = storage;
-        this.translate = translate;
-        /**
-         * Root page
-         *
-         * @type {*}
-         * @memberof MyApp
-         */
-        this.rootPage = 'HomePage';
-        /**
-        * List of pages in logged in state
-        *
-        * @private
-        * @type {Array<SideMenuItem>}
-        * @memberof MyApp
-        */
-        this.userPages = [
-            { title: MENU_TITLE.LOGIN, component: 'LoginPage', icon: 'log-in' },
-            { title: MENU_TITLE.HOME, component: 'HomePage', icon: 'home' },
-            { title: MENU_TITLE.BOOK_A_TIME, component: 'BookATimePage', icon: 'clipboard' },
-            { title: MENU_TITLE.ABOUT_US, component: 'AboutUsPage', icon: 'contacts' },
-            { title: MENU_TITLE.CONTACT, component: 'ContactPage', icon: 'phone-portrait' }
-        ];
-        /**
-          * List of pages in logged in state
-          *
-          * @private
-          * @type {Array<SideMenuItem>}
-          * @memberof MyApp
-          */
-        this.adminPages = [
-            { title: MENU_TITLE.HOME, component: 'HomePage', icon: 'home' },
-            { title: MENU_TITLE.BOOKED_TIMES, component: 'BookedTimesPage', icon: 'alarm' },
-            { title: MENU_TITLE.ABOUT_US, component: 'AboutUsPage', icon: 'contacts' },
-            { title: MENU_TITLE.MESSAGES, component: 'MessagesPage', icon: 'mail' },
-            { title: MENU_TITLE.LOGOUT, component: 'LoginPage', icon: 'log-out' }
-        ];
-        /**
-         * Possible languages to select.
-         *
-         * @type {[LanguageModel]}
-         * @memberof MyApp
-         */
-        this.languages = [];
-        /**
-         * State of pharmacy select dropdown.
-         *
-         * @type {boolean}
-         * @memberof MyApp
-         */
-        this.dropdownOpened = false;
-        /**
-         * Methods after login was completed.
-         *
-         * @private
-         * @memberof MyApp
-         */
-        this.loginEventComplete = function () {
-            _this.pages = _this.adminPages.map(function (x) { return Object.assign({}, x); });
-            // if (this.storage.getLoggedUser().admin) {
-            // this.pages.pop();
-            // this.pages.push(this.adminPages[0]);
-            // this.pages.push(this.loggedInPages[this.loggedInPages.length - 1]);
-            // }
-        };
-        /**
-         * Methods after logout was completed.
-         *
-         * @private
-         * @memberof MyApp
-         */
-        this.logoutEventComplete = function () {
-            _this.pages = _this.userPages;
-            _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, false);
-            _this.storage.clearConfig(_this.config.loginConfig.loggedInUser);
-        };
-        translate.setDefaultLang('en');
-        this.selectedLanguage = { key: 'en', name: 'English' };
-        this.languages.push(this.selectedLanguage);
-        this.languages.push({ key: 'ro', name: 'Română' });
-        this.languages.push({ key: 'hu', name: 'Magyar' });
-        platform.ready().then(function () {
-            _this.pages = _this.userPages;
-            // Okay, so the platform is ready and our plugins are available.
-            // Here you can do any higher level native things you might need.
-            statusBar.styleDefault();
-            splashScreen.hide();
-            //Subscribing to login and logout events
-            _this.event.subscribe(_this.config.loginConfig.logoutEventKey, _this.logoutEventComplete);
-            _this.event.subscribe(_this.config.loginConfig.loggedInCompleteEventKey, _this.loginEventComplete);
-        });
-    }
-    /**
-     *  Visibilitychange event is removed on destroy.
-     *
-     * @memberof ChatPage
-     */
-    MyApp.prototype.ngOnDestroy = function () {
-        //Unsubscribing to login and logout events
-        this.event.unsubscribe(this.config.loginConfig.logoutEventKey, this.logoutEventComplete);
-        this.event.unsubscribe(this.config.loginConfig.loggedInCompleteEventKey, this.loginEventComplete);
-    };
-    /**
-     * Opens a page as root page
-     *
-     * @param {any} page
-     * @memberof MyApp
-     */
-    MyApp.prototype.openPage = function (page) {
-        if (page.component != this.nav.getActive().name) {
-            console.log('open page ', page);
-            if (page.title == MENU_TITLE.LOGOUT) {
-                this.event.publish(this.config.loginConfig.logoutEventKey);
-            }
-            this.nav.setRoot(page.component);
-        }
-    };
-    /**
-     * Method to use selected language.
-     *
-     * @param {*} language
-     * @memberof MyApp
-     */
-    MyApp.prototype.useLanguage = function (language) {
-        this.translate.use(language.key);
-        this.selectedLanguage = language;
-        this.dropdownOpened = false;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]) === "function" && _a || Object)
-    ], MyApp.prototype, "nav", void 0);
-    MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\dev\MechanicApp\MechanicApp\src\app\app.html"*/'<ion-split-pane>\n    <ion-menu [content]="content" *ngIf="pages?.length > 0">\n        <ion-content padding>\n            <div class="menu-section head">\n                <ion-list>\n                    <ion-item class="pharmacy-selector">\n                        <button item-content ion-button full clear class="dropdown" (click)="dropdownOpened = !dropdownOpened"\n                            [ngClass]="dropdownOpened ? \'opened\' : \'\'">\n                            <div class="label">{{selectedLanguage.name}}</div>\n                            <ion-icon [name]="dropdownOpened ? \'ios-arrow-up\' : \'ios-arrow-down\'"></ion-icon>\n                        </button>\n\n                        <ion-list item-content class="dropdown-options">\n                            <ion-item class="option" *ngFor="let language of languages" (click)="useLanguage(language)">\n                                <ion-label>\n                                    <div class="pharma-name">{{language.name}}</div>\n                                    <ion-icon class="check" slot="end" name="ios-checkmark" *ngIf="language.name == selectedLanguage.name"></ion-icon>\n                                </ion-label>\n                            </ion-item>\n                        </ion-list>\n                    </ion-item>\n                </ion-list>\n            </div>\n            <ion-list>\n                <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n                    <ion-icon name="{{p.icon}}" item-start></ion-icon>\n                    <ion-badge *ngIf="p.badgeRight" color="{{p.badgeColor}}" item-end>{{p.badgeValue}}</ion-badge>\n                    {{\'menu.\' + p.title | translate}}\n                </button>\n\n            </ion-list>\n        </ion-content>\n\n        <!-- <ion-footer>\n            Version: {{versionString}}\n        </ion-footer> -->\n    </ion-menu>\n\n    <ion-nav id="nav" [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n</ion-split-pane>'/*ion-inline-end:"E:\dev\MechanicApp\MechanicApp\src\app\app.html"*/
-        }),
-        __param(4, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_config__["AppConfig"]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */]) === "function" && _h || Object])
-    ], MyApp);
-    return MyApp;
-    var _a, _b, _c, _d, _e, _f, _g, _h;
-}());
-
-//# sourceMappingURL=app.component.js.map
-
-/***/ }),
-
 /***/ 210:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_global_utils__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(25);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-
-
-var RecipeProvider = /** @class */ (function () {
-    function RecipeProvider(http, storage, config) {
-        this.http = http;
-        this.storage = storage;
-        this.config = config;
-        console.log('Hello Recipe Provider');
-    }
-    /**
-     * Get all recipe for user.
-     *
-     * @param {number} userId
-     * @returns {Promise<Recipe[]>}
-     * @memberof RecipeProvider
-     */
-    RecipeProvider.prototype.getRecipeList = function (userId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) {
-                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-                        headers.append('Content-Type', 'application/json');
-                        _this.http.get(_this.config.basePath + "/recipe/list/" + _this.storage.getLoggedUser().id, { headers: headers }).subscribe(function (recipeList) {
-                            recipeList.forEach(function (recipe) {
-                                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.notes)) {
-                                    recipe.notes = [];
-                                }
-                                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.products)) {
-                                    recipe.products = [];
-                                }
-                            });
-                            return resolve(recipeList);
-                        }, function (error) {
-                            console.error("Error while getting recipe list", error);
-                            return reject(error);
-                        });
-                    })];
-            });
-        });
-    };
-    /**
-     * Create recipe for user.
-     *
-     * @param {Recipe} recipe
-     * @returns {Promise<boolean>}
-     * @memberof RecipeProvider
-     */
-    RecipeProvider.prototype.createRecipe = function (recipe) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-            headers.append('Content-Type', 'application/json');
-            _this.http.put(_this.config.basePath + "/recipe/add", recipe).subscribe(function (newRecipe) {
-                return resolve(newRecipe);
-            }, function (error) {
-                console.error("Error while creating my product", error);
-                return reject(error);
-            });
-        });
-    };
-    /**
-     * Method to update existent recipe.
-     *
-     * @param {Recipe} recipe
-     * @returns {Promise<Recipe>}
-     * @memberof RecipeProvider
-     */
-    RecipeProvider.prototype.updateRecipe = function (recipe) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            _this.http.put(_this.config.basePath + "/recipe/edit", recipe).subscribe(function (newRecipe) {
-                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(newRecipe)) {
-                    reject("Null");
-                }
-                else {
-                    return resolve(newRecipe);
-                }
-            }, function (error) {
-                console.error("Error while creating my product", error);
-                return reject(error);
-            });
-        });
-    };
-    /**
-     * Method to delete recipe.
-     *
-     * @param {Recipe} recipe
-     * @returns {Promise<Recipe>}
-     * @memberof RecipeProvider
-     */
-    RecipeProvider.prototype.deleteRecipe = function (recipe) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-            headers.append('Content-Type', 'application/json');
-            _this.http.delete(_this.config.basePath + "/recipe/delete/" + recipe.id, { headers: headers }).subscribe(function (result) {
-                return resolve(result);
-            }, function (error) {
-                console.error("Error while deleting recipe", error);
-                return reject(error);
-            });
-        });
-    };
-    /**
-     * Get random recipe for user.
-     *
-     * @param {number} userId
-     * @returns {Promise<Recipe[]>}
-     * @memberof RecipeProvider
-     */
-    RecipeProvider.prototype.getRandomRecipe = function (userId) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) {
-                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-                        headers.append('Content-Type', 'application/json');
-                        _this.http.get(_this.config.basePath + "/recipe/random/" + _this.storage.getLoggedUser().id, { headers: headers }).subscribe(function (recipe) {
-                            if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.notes)) {
-                                recipe.notes = [];
-                            }
-                            if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.products)) {
-                                recipe.products = [];
-                            }
-                            return resolve(recipe);
-                        }, function (error) {
-                            console.error("Error while getting recipe list", error);
-                            return reject(error);
-                        });
-                    })];
-            });
-        });
-    };
-    RecipeProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
-    ], RecipeProvider);
-    return RecipeProvider;
-}());
-
-//# sourceMappingURL=recipe.provider.js.map
-
-/***/ }),
-
-/***/ 211:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlanProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tehnical_storage_storage_provider__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(25);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-
-var PlanProvider = /** @class */ (function () {
-    function PlanProvider(http, storage, config) {
-        this.http = http;
-        this.storage = storage;
-        this.config = config;
-        console.log('Hello Plan Provider');
-    }
-    /**
-     * Get plans.
-     *
-     * @param {string} startDate
-     * @param {string} endDate
-     * @returns {Promise<Recipe[]>}
-     * @memberof PlanProvider
-     */
-    PlanProvider.prototype.getPlans = function (startDate, endDate) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _this = this;
-            return __generator(this, function (_a) {
-                return [2 /*return*/, new Promise(function (resolve, reject) {
-                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-                        headers.append('Content-Type', 'application/json');
-                        _this.http.get(_this.config.basePath + "/plan/" + _this.storage.getLoggedUser().id + "/" +
-                            startDate + "/" + endDate, { headers: headers }).subscribe(function (planList) {
-                            return resolve(planList);
-                        }, function (error) {
-                            console.error("Error while getting plan list", error);
-                            return reject(error);
-                        });
-                    })];
-            });
-        });
-    };
-    /**
-     * Create plan for user.
-     *
-     * @param {Plan} recipe
-     * @returns {Promise<Plan>}
-     * @memberof RecipeProvider
-     */
-    PlanProvider.prototype.createPlan = function (plan) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-            headers.append('Content-Type', 'application/json');
-            _this.http.put(_this.config.basePath + "/plan/add", plan).subscribe(function (newPlan) {
-                return resolve(newPlan);
-            }, function (error) {
-                console.error("Error while creating plan", error);
-                return reject(error);
-            });
-        });
-    };
-    // /**
-    //  * Method to update existent recipe.
-    //  *
-    //  * @param {Recipe} recipe
-    //  * @returns {Promise<Recipe>}
-    //  * @memberof RecipeProvider
-    //  */
-    // updateRecipe(recipe: Recipe): Promise<Recipe> {
-    //   return new Promise((resolve, reject) => {
-    //     this.http.put(this.config.basePath + "/recipe/edit", recipe).subscribe((newRecipe: Recipe) => {
-    //       if (GlobalUtils.isUndefinedOrNull(newRecipe)) {
-    //         reject("Null");
-    //       } else {
-    //         return resolve(newRecipe);
-    //       }
-    //     }, error => {
-    //       console.error("Error while creating my product", error);
-    //       return reject(error);
-    //     });
-    //   });
-    // }
-    /**
-     * Method to delete recipe.
-     *
-     * @param {id} planId
-     * @returns {Promise<boolean>}
-     * @memberof PlanProvider
-     */
-    PlanProvider.prototype.deletePlan = function (planId) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
-            headers.append('Content-Type', 'application/json');
-            _this.http.delete(_this.config.basePath + "/plan/delete/" + planId, { headers: headers }).subscribe(function (result) {
-                return resolve(result);
-            }, function (error) {
-                console.error("Error while deleting recipe", error);
-                return reject(error);
-            });
-        });
-    };
-    PlanProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
-    ], PlanProvider);
-    return PlanProvider;
-}());
-
-//# sourceMappingURL=plan.provider.js.map
-
-/***/ }),
-
-/***/ 212:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1188,23 +757,22 @@ var UserProvider = /** @class */ (function () {
     UserProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
         __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */], Object, __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */]])
     ], UserProvider);
     return UserProvider;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=user.provider.js.map
 
 /***/ }),
 
-/***/ 213:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(229);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1212,7 +780,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 231:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1224,14 +792,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common_http__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_product_product_provider__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_product_product_provider__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_recipe_recipe_provider__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user_provider__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_recipe_recipe_provider__ = __webpack_require__(290);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user_provider__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__providers_tehnical_storage_storage_provider__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_config__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_plan_plan_provider__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__providers_plan_plan_provider__ = __webpack_require__(291);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ngx_translate_core__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ngx_translate_http_loader__ = __webpack_require__(292);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1269,21 +837,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["b" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/about-us/about-us.page.module#AboutUsPageModule', name: 'AboutUsPage', segment: 'about-us.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/book-a-time/book-a-time.page.module#AboutUsPageModule', name: 'BookATimePage', segment: 'book-a-time.page', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/contact/contact.page.module#ContactPageModule', name: 'ContactPage', segment: 'contact.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.page.module#HomePageModule', name: 'HomePage', segment: 'home.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.page.module#LoginPageModule', name: 'LoginPage', segment: 'login.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/plan/plan-list/plan-list.page.module#PlanListPageModule', name: 'PlanListPage', segment: 'plan-list.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/plan/plan-new/plan-new.page.module#PlanNewPageModule', name: 'PlanNewPage', segment: 'plan-new.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/product-editor/product-editor-list/product-editor.page.module#ProductEditorPageModule', name: 'ProductEditorPage', segment: 'product-editor.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/product-editor/product-editor-new/product-editor-new.page.module#ProductEditorNewPageModule', name: 'ProductEditorNewPage', segment: 'product-editor-new.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recipe/recipe-detail/recipe-detail.page.module#RecipeDetailPageModule', name: 'RecipeDetailPage', segment: 'recipe-detail.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recipe/recipe-list/recipe-list.page.module#RecipeListPageModule', name: 'RecipeListPage', segment: 'recipe-list.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recipe/recipe-new/recipe-new.page.module#RecipeNewPageModule', name: 'RecipeNewPage', segment: 'recipe-new.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/recipe/recipe-product/recipe-product.page.module#RecipeNewPageModule', name: 'RecipeProductPage', segment: 'recipe-product.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/settings/settings.page.module#SettingsPageModule', name: 'SettingsPage', segment: 'settings.page', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/login/login.page.module#LoginPageModule', name: 'LoginPage', segment: 'login.page', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_5__angular_common_http__["b" /* HttpClientModule */],
@@ -1310,8 +865,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__providers_user_user_provider__["a" /* UserProvider */],
                 __WEBPACK_IMPORTED_MODULE_13__providers_plan_plan_provider__["a" /* PlanProvider */],
                 { provide: __WEBPACK_IMPORTED_MODULE_11__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */], useClass: __WEBPACK_IMPORTED_MODULE_11__providers_tehnical_storage_storage_provider__["b" /* StorageProviderLocal */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_12__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_12__app_config__["c" /* CONFIG_DEFAULT */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_12__app_config__["e" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_12__app_config__["d" /* prefixLocalStorageFactory */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_12__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_12__app_config__["b" /* CONFIG_DEFAULT */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_12__app_config__["d" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_12__app_config__["c" /* prefixLocalStorageFactory */] },
             ]
         })
     ], AppModule);
@@ -1331,10 +886,10 @@ function HttpLoaderFactory(http) {
 "use strict";
 /* unused harmony export DEFAULT_LOGIN_CONFIG */
 /* unused harmony export DEFAULT_STATISTIC_CONFIG */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CONFIG_DEFAULT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONFIG_DEFAULT; });
 /* unused harmony export dynamicConfig */
-/* harmony export (immutable) */ __webpack_exports__["d"] = prefixLocalStorageFactory;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return prefixLocalstorage; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = prefixLocalStorageFactory;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return prefixLocalstorage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_CONFIG_TOKEN; });
 /* unused harmony export BACKEND_RES_LOGIN */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -1554,7 +1109,7 @@ var StorageProviderLocal = /** @class */ (function (_super) {
     };
     StorageProviderLocal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["e" /* prefixLocalstorage */])),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["d" /* prefixLocalstorage */])),
         __metadata("design:paramtypes", [Object, __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* Events */], String])
     ], StorageProviderLocal);
     return StorageProviderLocal;
@@ -1697,6 +1252,378 @@ var StorageProviderLocal = /** @class */ (function (_super) {
 //   }
 // }
 //# sourceMappingURL=storage.provider.js.map
+
+/***/ }),
+
+/***/ 290:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RecipeProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_global_utils__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var RecipeProvider = /** @class */ (function () {
+    function RecipeProvider(http, storage, config) {
+        this.http = http;
+        this.storage = storage;
+        this.config = config;
+        console.log('Hello Recipe Provider');
+    }
+    /**
+     * Get all recipe for user.
+     *
+     * @param {number} userId
+     * @returns {Promise<Recipe[]>}
+     * @memberof RecipeProvider
+     */
+    RecipeProvider.prototype.getRecipeList = function (userId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+                        headers.append('Content-Type', 'application/json');
+                        _this.http.get(_this.config.basePath + "/recipe/list/" + _this.storage.getLoggedUser().id, { headers: headers }).subscribe(function (recipeList) {
+                            recipeList.forEach(function (recipe) {
+                                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.notes)) {
+                                    recipe.notes = [];
+                                }
+                                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.products)) {
+                                    recipe.products = [];
+                                }
+                            });
+                            return resolve(recipeList);
+                        }, function (error) {
+                            console.error("Error while getting recipe list", error);
+                            return reject(error);
+                        });
+                    })];
+            });
+        });
+    };
+    /**
+     * Create recipe for user.
+     *
+     * @param {Recipe} recipe
+     * @returns {Promise<boolean>}
+     * @memberof RecipeProvider
+     */
+    RecipeProvider.prototype.createRecipe = function (recipe) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+            headers.append('Content-Type', 'application/json');
+            _this.http.put(_this.config.basePath + "/recipe/add", recipe).subscribe(function (newRecipe) {
+                return resolve(newRecipe);
+            }, function (error) {
+                console.error("Error while creating my product", error);
+                return reject(error);
+            });
+        });
+    };
+    /**
+     * Method to update existent recipe.
+     *
+     * @param {Recipe} recipe
+     * @returns {Promise<Recipe>}
+     * @memberof RecipeProvider
+     */
+    RecipeProvider.prototype.updateRecipe = function (recipe) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.put(_this.config.basePath + "/recipe/edit", recipe).subscribe(function (newRecipe) {
+                if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(newRecipe)) {
+                    reject("Null");
+                }
+                else {
+                    return resolve(newRecipe);
+                }
+            }, function (error) {
+                console.error("Error while creating my product", error);
+                return reject(error);
+            });
+        });
+    };
+    /**
+     * Method to delete recipe.
+     *
+     * @param {Recipe} recipe
+     * @returns {Promise<Recipe>}
+     * @memberof RecipeProvider
+     */
+    RecipeProvider.prototype.deleteRecipe = function (recipe) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+            headers.append('Content-Type', 'application/json');
+            _this.http.delete(_this.config.basePath + "/recipe/delete/" + recipe.id, { headers: headers }).subscribe(function (result) {
+                return resolve(result);
+            }, function (error) {
+                console.error("Error while deleting recipe", error);
+                return reject(error);
+            });
+        });
+    };
+    /**
+     * Get random recipe for user.
+     *
+     * @param {number} userId
+     * @returns {Promise<Recipe[]>}
+     * @memberof RecipeProvider
+     */
+    RecipeProvider.prototype.getRandomRecipe = function (userId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+                        headers.append('Content-Type', 'application/json');
+                        _this.http.get(_this.config.basePath + "/recipe/random/" + _this.storage.getLoggedUser().id, { headers: headers }).subscribe(function (recipe) {
+                            if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.notes)) {
+                                recipe.notes = [];
+                            }
+                            if (__WEBPACK_IMPORTED_MODULE_2__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(recipe.products)) {
+                                recipe.products = [];
+                            }
+                            return resolve(recipe);
+                        }, function (error) {
+                            console.error("Error while getting recipe list", error);
+                            return reject(error);
+                        });
+                    })];
+            });
+        });
+    };
+    RecipeProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
+    ], RecipeProvider);
+    return RecipeProvider;
+}());
+
+//# sourceMappingURL=recipe.provider.js.map
+
+/***/ }),
+
+/***/ 291:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PlanProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tehnical_storage_storage_provider__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(25);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var PlanProvider = /** @class */ (function () {
+    function PlanProvider(http, storage, config) {
+        this.http = http;
+        this.storage = storage;
+        this.config = config;
+        console.log('Hello Plan Provider');
+    }
+    /**
+     * Get plans.
+     *
+     * @param {string} startDate
+     * @param {string} endDate
+     * @returns {Promise<Recipe[]>}
+     * @memberof PlanProvider
+     */
+    PlanProvider.prototype.getPlans = function (startDate, endDate) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+                        headers.append('Content-Type', 'application/json');
+                        _this.http.get(_this.config.basePath + "/plan/" + _this.storage.getLoggedUser().id + "/" +
+                            startDate + "/" + endDate, { headers: headers }).subscribe(function (planList) {
+                            return resolve(planList);
+                        }, function (error) {
+                            console.error("Error while getting plan list", error);
+                            return reject(error);
+                        });
+                    })];
+            });
+        });
+    };
+    /**
+     * Create plan for user.
+     *
+     * @param {Plan} recipe
+     * @returns {Promise<Plan>}
+     * @memberof RecipeProvider
+     */
+    PlanProvider.prototype.createPlan = function (plan) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+            headers.append('Content-Type', 'application/json');
+            _this.http.put(_this.config.basePath + "/plan/add", plan).subscribe(function (newPlan) {
+                return resolve(newPlan);
+            }, function (error) {
+                console.error("Error while creating plan", error);
+                return reject(error);
+            });
+        });
+    };
+    // /**
+    //  * Method to update existent recipe.
+    //  *
+    //  * @param {Recipe} recipe
+    //  * @returns {Promise<Recipe>}
+    //  * @memberof RecipeProvider
+    //  */
+    // updateRecipe(recipe: Recipe): Promise<Recipe> {
+    //   return new Promise((resolve, reject) => {
+    //     this.http.put(this.config.basePath + "/recipe/edit", recipe).subscribe((newRecipe: Recipe) => {
+    //       if (GlobalUtils.isUndefinedOrNull(newRecipe)) {
+    //         reject("Null");
+    //       } else {
+    //         return resolve(newRecipe);
+    //       }
+    //     }, error => {
+    //       console.error("Error while creating my product", error);
+    //       return reject(error);
+    //     });
+    //   });
+    // }
+    /**
+     * Method to delete recipe.
+     *
+     * @param {id} planId
+     * @returns {Promise<boolean>}
+     * @memberof PlanProvider
+     */
+    PlanProvider.prototype.deletePlan = function (planId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["c" /* HttpHeaders */]();
+            headers.append('Content-Type', 'application/json');
+            _this.http.delete(_this.config.basePath + "/plan/delete/" + planId, { headers: headers }).subscribe(function (result) {
+                return resolve(result);
+            }, function (error) {
+                console.error("Error while deleting recipe", error);
+                return reject(error);
+            });
+        });
+    };
+    PlanProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2__tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
+    ], PlanProvider);
+    return PlanProvider;
+}());
+
+//# sourceMappingURL=plan.provider.js.map
 
 /***/ }),
 
@@ -1964,5 +1891,5 @@ var GlobalUtils = /** @class */ (function () {
 
 /***/ })
 
-},[213]);
+},[211]);
 //# sourceMappingURL=main.js.map

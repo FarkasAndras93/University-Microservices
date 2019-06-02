@@ -50,7 +50,7 @@ export class MyApp {
    * @type {*}
    * @memberof MyApp
    */
-  rootPage: any = 'HomePage';
+  rootPage: any = 'LoginPage';
 
   /**
   * List of pages in logged in state
@@ -61,9 +61,6 @@ export class MyApp {
   */
   private userPages: Array<SideMenuItem> = [
     { title: MENU_TITLE.LOGIN, component: 'LoginPage', icon: 'log-in' },
-    { title: MENU_TITLE.HOME, component: 'HomePage', icon: 'home' },
-    { title: MENU_TITLE.BOOK_A_TIME, component: 'BookATimePage', icon: 'clipboard' },
-    { title: MENU_TITLE.ABOUT_US, component: 'AboutUsPage', icon: 'contacts' },
     { title: MENU_TITLE.CONTACT, component: 'ContactPage', icon: 'phone-portrait' }
   ]
 
@@ -75,10 +72,6 @@ export class MyApp {
     * @memberof MyApp
     */
   private adminPages: Array<SideMenuItem> = [
-    { title: MENU_TITLE.HOME, component: 'HomePage', icon: 'home' },
-    { title: MENU_TITLE.BOOKED_TIMES, component: 'BookedTimesPage', icon: 'alarm' },
-    { title: MENU_TITLE.ABOUT_US, component: 'AboutUsPage', icon: 'contacts' },
-    { title: MENU_TITLE.MESSAGES, component: 'MessagesPage', icon: 'mail' },
     { title: MENU_TITLE.LOGOUT, component: 'LoginPage', icon: 'log-out' }
   ]
 

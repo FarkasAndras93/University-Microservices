@@ -1,26 +1,6 @@
 <ion-split-pane>
     <ion-menu [content]="content" *ngIf="pages?.length > 0">
         <ion-content padding>
-            <div class="menu-section head">
-                <ion-list>
-                    <ion-item class="pharmacy-selector">
-                        <button item-content ion-button full clear class="dropdown" (click)="dropdownOpened = !dropdownOpened"
-                            [ngClass]="dropdownOpened ? 'opened' : ''">
-                            <div class="label">{{selectedLanguage.name}}</div>
-                            <ion-icon [name]="dropdownOpened ? 'ios-arrow-up' : 'ios-arrow-down'"></ion-icon>
-                        </button>
-
-                        <ion-list item-content class="dropdown-options">
-                            <ion-item class="option" *ngFor="let language of languages" (click)="useLanguage(language)">
-                                <ion-label>
-                                    <div class="pharma-name">{{language.name}}</div>
-                                    <ion-icon class="check" slot="end" name="ios-checkmark" *ngIf="language.name == selectedLanguage.name"></ion-icon>
-                                </ion-label>
-                            </ion-item>
-                        </ion-list>
-                    </ion-item>
-                </ion-list>
-            </div>
             <ion-list>
                 <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
                     <ion-icon name="{{p.icon}}" item-start></ion-icon>
@@ -30,10 +10,6 @@
 
             </ion-list>
         </ion-content>
-
-        <!-- <ion-footer>
-            Version: {{versionString}}
-        </ion-footer> -->
     </ion-menu>
 
     <ion-nav id="nav" [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>
