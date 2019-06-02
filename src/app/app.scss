@@ -1,0 +1,298 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+ion-app [padding],
+ion-app [padding] .scroll-content {
+  padding: 0 15px 15px !important;
+}
+
+ion-app [small-padding],
+ion-app [small-padding] .scroll-content {
+  padding: 7px !important;
+}
+
+[padding] {
+  h1, h2, h3, h4, h5, h6 {
+    &:first-child {
+      margin: 0;
+    }
+  }
+}
+
+div.scroll-content {
+  overflow-y: auto !important;
+  padding-bottom: 0 !important;
+}
+
+ion-item.menu-item.item {
+	.label-auto {
+		&.label {
+      &.label-md,
+      &.label-ios {
+        color: #515151;
+      }
+    }
+  }
+}
+ion-select {
+  &.select {
+    &.select-md,
+    &.select-ios {
+      padding: 12px 0 12px 15px;
+      max-width: unset;
+      width: auto;
+      text-align: right;
+      flex-grow: 2;
+      .select-placeholder {
+        color: black;
+      }
+      .select-icon {
+        box-sizing: content-box;
+        width: 15px;
+        height: 19px;
+        .select-icon-inner {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+  }
+}
+.select-disabled,
+.item-select-disabled ion-label {
+  opacity: .5;
+}
+ion-datetime {
+  width: 50%;
+  text-align: right;
+  .datetime-text {
+    padding: 12px 0;
+    max-width: unset;
+    width: auto;
+    text-align: right;
+    flex-grow: 2;
+  }
+  &.datetime-md,
+  &.datetime-ios {
+    padding: 0;
+  }
+  &.filter-left {
+    .datetime-text {
+      padding: 12px;
+    }
+  }
+}
+
+.error-toast .toast-wrapper,
+.success-toast .toast-wrapper {
+  background: rgba(0, 0, 0, .9);
+  border-radius: 5px;
+  max-width: 300px;
+}
+.error-toast .toast-wrapper {
+  border-bottom: 1px solid #e40000;
+}
+.success-toast .toast-wrapper {
+  border-bottom: 1px solid #00b900;
+}
+
+// edit and delete buttons on lists
+.list-item-button {
+  height: 25px;
+  width: 25px;
+  display:inline-block;
+  padding: 0 5px;
+  margin-right: -5px;
+  ion-icon {
+    font-size: 20px;
+  }
+}
+
+.back-button,
+.save-button,
+.close-button {
+  margin: 0;
+  padding: 0 5px;
+  height: 32px;
+  border: 0;
+  font-size: 18px;
+  font-weight: 500;
+  background: none;
+  ion-icon {
+    vertical-align: middle;
+    &.icon-md {
+      font-size: 24px;
+    }
+    &.icon-ios {
+      font-size: 32px;
+      padding-left: 2px;
+    }
+  }
+}
+
+.menu-section.head {
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: darken(#2f2d2f, 3%);;
+
+  > ion-list {
+    margin-left: -15px;
+    margin-right: -15px;
+
+    > ion-item {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+  }
+
+  ion-item.utility ion-label {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .user-badge {
+    flex-grow: 2.3;
+
+    ion-chip {
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    ion-avatar {
+      width: 30px;
+      height: 30px;
+      min-width: auto;
+      min-height: auto;
+      margin-right: 9px !important;
+      align-self: center;
+    }
+
+  }
+
+  button svg.icon {
+    max-width: 22px;
+    max-height: 22px;
+    fill: #ffffff;
+  }
+
+  .utility-btns {
+    text-align: right;
+    margin-right: -8px;
+
+    button {
+      padding-left: 6px;
+      padding-right: 6px;
+      margin: 0;
+    }
+
+  }
+
+  ion-list ion-item:last-child {
+    border-bottom: none !important;
+  }
+
+}
+
+.pharmacy-selector {
+
+  > .item-inner > .input-wrapper {display: block;}
+
+  button.dropdown {
+    font-size: inherit;
+    text-align: left;
+    color: black;
+    text-transform: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+    min-height: 55px;
+
+    .button-inner {
+      justify-content: space-between;
+    }
+
+    ion-icon.icon {margin-left: auto;}
+  }
+
+  .dropdown-options {
+    margin-bottom: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all ease-in-out .30s;
+  }
+
+  button.dropdown.opened + .dropdown-options {
+    max-height: 700px;
+    margin-bottom: 12px;
+  }
+
+  .dropdown-options .option {
+    .pharma-name {
+      position: absolute;
+      width: 100%;
+      padding-right: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      top: 12px;
+    }
+    
+    ion-icon.check {
+      font-size: 40px;
+      // opacity: 0.19;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+}
+
+.list-header,
+.item-divider {
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: none;
+  margin: 0 -15px;
+  width: auto;
+  padding: 0 15px !important;
+  border: 0 !important;
+  min-height: 38px !important;
+  background-color: #ebeef0;
+
+  .label-md,
+  .label-ios {
+  margin: 8px 0;
+  }
+
+  &.list-header-ios,
+  &.item-divider-ios {
+    text-transform: none;
+    letter-spacing: 0px;
+  }
+  ion-select {
+    &.select-md,
+    &.select-ios {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+}

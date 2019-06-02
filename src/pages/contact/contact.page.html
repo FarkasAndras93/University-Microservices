@@ -1,0 +1,48 @@
+<simple-app-header [header]="headerModel"></simple-app-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item-group>
+      <ion-list-header>{{'contact.header.info' | translate}}</ion-list-header>
+      <ion-item>
+          <h3>{{'contact.info.location' | translate}}:</h3>
+          <p>{{'contact.info.location-value' | translate}}</p>
+          <h3>{{'contact.info.phone' | translate}}:</h3>
+          <p>0756-380-738</p>
+          <p>0724-226-171</p>
+          <h3>{{'contact.info.working-hours' | translate}}</h3>
+          <p>{{'contact.info.open-week' | translate}}: 8:00 - 18:30</p>
+          <p>{{'contact.info.open-weekend' | translate}}: 8:00 - 13:00</p>
+          <a href="tel:+497142588663" item-end>
+            <ion-icon name="call" item-end></ion-icon>
+          </a>
+        </ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-list-header>{{'contact.header.message' | translate}}</ion-list-header>
+      <ion-item>
+        <ion-label>{{'contact.name' | translate}}:</ion-label>
+        <ion-input [(ngModel)]="message.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{'contact.email' | translate}}:</ion-label>
+        <ion-input [(ngModel)]="message.email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{'contact.phone' | translate}}:</ion-label>
+        <ion-input [(ngModel)]="message.phone"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{'contact.subject' | translate}}:</ion-label>
+        <ion-input [(ngModel)]="message.subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{'contact.message' | translate}}:</ion-label>
+        <ion-textarea rows="5" [(ngModel)]="message.message" class="task-description-area"></ion-textarea>
+      </ion-item>
+      <button ion-button full (click)="sendMessage()" expand="block">{{'button.send' | translate}}</button>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

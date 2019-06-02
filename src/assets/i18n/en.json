@@ -1,0 +1,41 @@
+{
+    "contact": {
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "subject": "Subject",
+        "message": "Message",
+        "header": {
+            "message": "Write us a message",
+            "info": "General info"
+        },
+        "info": {
+            "location": "Location",
+            "location-value": "Munkás utca",
+            "phone": "Phone",
+            "working-hours": "Working hours",
+            "open-week": "Mon - Fri",
+            "open-weekend": "Sat"
+        }
+    },
+    "booking": {
+        "first-name": "First name",
+        "last-name": "Last name",
+        "phone": "Phone",
+        "plate-number": "Plate number",
+        "description": "Describe the problem"
+    },
+    "menu": {
+        "LOGIN": "Login",
+        "HOME": "Home",
+        "BOOK_A_TIME": "Book a time",
+        "BOOKED_TIMES": "Booked times",
+        "ABOUT_US": "About us",
+        "CONTACT": "Contact",
+        "MESSAGES": "Messages",
+        "LOGOUT": "Logout"
+    },
+    "button": {
+        "send": "Send"
+    }
+}

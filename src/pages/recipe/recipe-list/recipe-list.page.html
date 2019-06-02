@@ -1,0 +1,24 @@
+<simple-app-header [header]="headerModel"></simple-app-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let recipe of recipeList" (click)="openRecipeDetails(recipe)">
+      <h2>{{recipe.name}}</h2>
+      <p>{{recipe.description}}</p>
+      <ion-buttons item-right>
+        <button ion-fab clear (click)="editRecipe($event, recipe)" color="bluedark" class="list-item-button" style="margin-right:2px">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <button ion-fab clear (click)="removeRecipe($event, recipe)" color="bluedark" class="list-item-button">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-fab right bottom>
+  <button ion-fab (click)="goToNewRecipePage()" color="bluedark">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

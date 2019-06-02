@@ -1,0 +1,24 @@
+recipe-product {
+    .input-cover{
+        left: initial;
+        right: 0;
+        width: 40%;
+    }
+    .checkbox .item-cover {
+        width: 15%;
+    }
+    .name-label{
+        width: 70%;
+    }
+    .weight-input{
+        width: 30%;
+        border-style: solid;
+        border-radius: 7px;
+        border-width: 1px;
+        border-color: gray;
+    }
+    ion-item, .item-inner{
+        border-bottom-color: gray !important;
+        box-shadow: none !important;
+    }
+}

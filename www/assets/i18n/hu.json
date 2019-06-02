@@ -1,0 +1,41 @@
+{
+    "contact": {
+        "name": "Név",
+        "email": "Email",
+        "phone": "Telefon",
+        "subject": "Tárgy",
+        "message": "Üzenet",
+        "header": {
+            "message": "Üzenj nekünk",
+            "info": "Általános informaciók"
+        },
+        "info": {
+            "location": "Hely",
+            "location-value": "Munkás utca",
+            "phone": "Telefon",
+            "working-hours": "Munka program",
+            "open-week": "H - P",
+            "open-weekend": "Szo"
+        }
+    },
+    "booking": {
+        "first-name": "Családnév",
+        "last-name": "Keresztnév",
+        "phone": "Telefon",
+        "plate-number": "Számtábla",
+        "description": "Mi a probléma"
+    },
+    "menu": {
+        "LOGIN": "Bejelentkezés",
+        "HOME": "Home",
+        "BOOK_A_TIME": "Időpont előjegyzése",
+        "BOOKED_TIMES": "Előjegyzett időpontok",
+        "ABOUT_US": "Rólunk",
+        "CONTACT": "Kontakt",
+        "MESSAGES": "Üzenetek",
+        "LOGOUT": "Kijelentkezés"
+    },
+    "button": {
+        "send": "Elküldés"
+    }
+}
