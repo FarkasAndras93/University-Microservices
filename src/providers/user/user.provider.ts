@@ -5,6 +5,7 @@ import { User } from '../../model/backend/user/user';
 import { Events } from 'ionic-angular';
 import { AppConfig, APP_CONFIG_TOKEN } from '../../app/app.config';
 import { StorageProvider } from '../tehnical/storage/storage.provider';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Injectable()
 export class UserProvider {
@@ -16,6 +17,7 @@ export class UserProvider {
 
   //TODO - encode in md5 the password
   login(username: string, password: string): Promise<User> {
+    let hash = Md5.hashStr("password");
     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
     return Promise.resolve(new User("Name1", "Username2", ""));
 
@@ -24,7 +26,7 @@ export class UserProvider {
     //   headers.append('Content-Type', 'application/json');
 
     //   this.http.post(this.config.basePath2 + "/login",
-    //     { "username": username, "password": password }, { headers: headers }
+    //     { "username": username, "password": hash.toString() }, { headers: headers }
     //   ).subscribe((loggedUser: any) => {
     //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
     //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
@@ -39,14 +41,15 @@ export class UserProvider {
 
   //TODO - encode in md5 the password
   register(name: string, username: string, password: string): Promise<User> {
-    return Promise.resolve(new User("Name1", "Username1", "Password1"));
+    let hash = Md5.hashStr("password");
+    return Promise.resolve(new User("Name1", "Username1", hash.toString()));
 
     // return new Promise((resolve, reject) => {
     //   let headers = new HttpHeaders();
     //   headers.append('Content-Type', 'application/json');
 
     //   this.http.post(this.config.basePath2 + "/register",
-    //     { "name": name, "username": username, "password": password }, { headers: headers }
+    //     { "name": name, "username": username, "password": hash }, { headers: headers }
     //   ).subscribe((loggedUser: any) => {
     //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
     //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);

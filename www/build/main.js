@@ -286,19 +286,19 @@ webpackEmptyAsyncContext.id = 118;
 
 var map = {
 	"../pages/contact/contact.page.module": [
-		293,
+		294,
 		2
 	],
 	"../pages/login/login.page.module": [
-		294,
+		295,
 		1
 	],
 	"../pages/messages/messages.page.module": [
-		295,
+		296,
 		0
 	],
 	"../pages/register/register.page.module": [
-		296,
+		297,
 		3
 	]
 };
@@ -319,154 +319,6 @@ module.exports = webpackAsyncContext;
 /***/ }),
 
 /***/ 207:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(211);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__ = __webpack_require__(42);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-
-
-
-var UserProvider = /** @class */ (function () {
-    function UserProvider(http, event, config, storage) {
-        this.http = http;
-        this.event = event;
-        this.config = config;
-        this.storage = storage;
-        console.log('Hello RestProvider Provider');
-    }
-    //TODO - encode in md5 the password
-    UserProvider.prototype.login = function (username, password) {
-        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-        return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username2", ""));
-        // return new Promise((resolve, reject) => {
-        //   let headers = new HttpHeaders();
-        //   headers.append('Content-Type', 'application/json');
-        //   this.http.post(this.config.basePath2 + "/login",
-        //     { "username": username, "password": password }, { headers: headers }
-        //   ).subscribe((loggedUser: any) => {
-        //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-        //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-        //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
-        //     return resolve(loggedUser);
-        //   }, error => {
-        //     console.error("Error while loggin in application", error);
-        //     return reject(error);
-        //   });
-        // });
-    };
-    //TODO - encode in md5 the password
-    UserProvider.prototype.register = function (name, username, password) {
-        return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username1", "Password1"));
-        // return new Promise((resolve, reject) => {
-        //   let headers = new HttpHeaders();
-        //   headers.append('Content-Type', 'application/json');
-        //   this.http.post(this.config.basePath2 + "/register",
-        //     { "name": name, "username": username, "password": password }, { headers: headers }
-        //   ).subscribe((loggedUser: any) => {
-        //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-        //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-        //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
-        //     return resolve(loggedUser);
-        //   }, error => {
-        //     console.error("Error while loggin in application", error);
-        //     return reject(error);
-        //   });
-        // });
-    };
-    /**
-   * Method to return messages for logged user.
-   * @returns {Promise<MyProduct[]>}
-   * @memberof ProductProvider
-   */
-    UserProvider.prototype.getAllUsers = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var users;
-            return __generator(this, function (_a) {
-                users = [];
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name2", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name3", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name4", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name5", undefined, undefined));
-                users[0].id = "1";
-                users[1].id = "2";
-                users[2].id = "3";
-                users[3].id = "4";
-                users[4].id = "5";
-                return [2 /*return*/, Promise.resolve(users)];
-            });
-        });
-    };
-    UserProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _d || Object])
-    ], UserProvider);
-    return UserProvider;
-    var _a, _b, _c, _d;
-}());
-
-//# sourceMappingURL=user.provider.js.map
-
-/***/ }),
-
-/***/ 208:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -559,12 +411,164 @@ var ToastProvider = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 208:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var UserProvider = /** @class */ (function () {
+    function UserProvider(http, event, config, storage) {
+        this.http = http;
+        this.event = event;
+        this.config = config;
+        this.storage = storage;
+        console.log('Hello RestProvider Provider');
+    }
+    //TODO - encode in md5 the password
+    UserProvider.prototype.login = function (username, password) {
+        var hash = __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__["Md5"].hashStr("password");
+        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username2", ""));
+        // return new Promise((resolve, reject) => {
+        //   let headers = new HttpHeaders();
+        //   headers.append('Content-Type', 'application/json');
+        //   this.http.post(this.config.basePath2 + "/login",
+        //     { "username": username, "password": hash.toString() }, { headers: headers }
+        //   ).subscribe((loggedUser: any) => {
+        //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
+        //     return resolve(loggedUser);
+        //   }, error => {
+        //     console.error("Error while loggin in application", error);
+        //     return reject(error);
+        //   });
+        // });
+    };
+    //TODO - encode in md5 the password
+    UserProvider.prototype.register = function (name, username, password) {
+        var hash = __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__["Md5"].hashStr("password");
+        return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username1", hash.toString()));
+        // return new Promise((resolve, reject) => {
+        //   let headers = new HttpHeaders();
+        //   headers.append('Content-Type', 'application/json');
+        //   this.http.post(this.config.basePath2 + "/register",
+        //     { "name": name, "username": username, "password": hash }, { headers: headers }
+        //   ).subscribe((loggedUser: any) => {
+        //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
+        //     return resolve(loggedUser);
+        //   }, error => {
+        //     console.error("Error while loggin in application", error);
+        //     return reject(error);
+        //   });
+        // });
+    };
+    /**
+   * Method to return messages for logged user.
+   * @returns {Promise<MyProduct[]>}
+   * @memberof ProductProvider
+   */
+    UserProvider.prototype.getAllUsers = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var users;
+            return __generator(this, function (_a) {
+                users = [];
+                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", undefined, undefined));
+                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name2", undefined, undefined));
+                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name3", undefined, undefined));
+                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name4", undefined, undefined));
+                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name5", undefined, undefined));
+                users[0].id = "1";
+                users[1].id = "2";
+                users[2].id = "3";
+                users[3].id = "4";
+                users[4].id = "5";
+                return [2 /*return*/, Promise.resolve(users)];
+            });
+        });
+    };
+    UserProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
+        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */], Object, __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */]])
+    ], UserProvider);
+    return UserProvider;
+}());
+
+//# sourceMappingURL=user.provider.js.map
+
+/***/ }),
+
 /***/ 209:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_backend_message_message__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_backend_message_message__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__ = __webpack_require__(42);
@@ -671,10 +675,9 @@ var MessageProvider = /** @class */ (function () {
     MessageProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
         __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_app_config__["AppConfig"]) === "function" && _c || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
     ], MessageProvider);
     return MessageProvider;
-    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=message.provider.js.map
@@ -682,33 +685,6 @@ var MessageProvider = /** @class */ (function () {
 /***/ }),
 
 /***/ 210:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageModel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_global_utils__ = __webpack_require__(106);
-
-var MessageModel = /** @class */ (function () {
-    function MessageModel(name, phone, subject, message, email, userId) {
-        this.name = name;
-        this.phone = phone;
-        this.subject = subject;
-        this.message = message;
-        if (!__WEBPACK_IMPORTED_MODULE_0__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(email)) {
-            this.email = email;
-        }
-        if (!__WEBPACK_IMPORTED_MODULE_0__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(userId)) {
-            this.userId = userId;
-        }
-    }
-    return MessageModel;
-}());
-
-//# sourceMappingURL=message.js.map
-
-/***/ }),
-
-/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -726,7 +702,7 @@ var User = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 212:
+/***/ 211:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -917,6 +893,33 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 212:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageModel; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_global_utils__ = __webpack_require__(106);
+
+var MessageModel = /** @class */ (function () {
+    function MessageModel(name, phone, subject, message, email, userId) {
+        this.name = name;
+        this.phone = phone;
+        this.subject = subject;
+        this.message = message;
+        if (!__WEBPACK_IMPORTED_MODULE_0__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(email)) {
+            this.email = email;
+        }
+        if (!__WEBPACK_IMPORTED_MODULE_0__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(userId)) {
+            this.userId = userId;
+        }
+    }
+    return MessageModel;
+}());
+
+//# sourceMappingURL=message.js.map
+
+/***/ }),
+
 /***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -944,13 +947,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_config__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ngx_translate_core__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ngx_translate_http_loader__ = __webpack_require__(292);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ngx_translate_http_loader__ = __webpack_require__(293);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1012,8 +1015,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__["a" /* UserProvider */],
                 __WEBPACK_IMPORTED_MODULE_0__providers_message_message_provider__["a" /* MessageProvider */],
                 { provide: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */], useClass: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["b" /* StorageProviderLocal */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* CONFIG_DEFAULT */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["e" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalStorageFactory */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["b" /* CONFIG_DEFAULT */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* prefixLocalStorageFactory */] },
             ]
         })
     ], AppModule);
@@ -1033,10 +1036,10 @@ function HttpLoaderFactory(http) {
 "use strict";
 /* unused harmony export DEFAULT_LOGIN_CONFIG */
 /* unused harmony export DEFAULT_STATISTIC_CONFIG */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CONFIG_DEFAULT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONFIG_DEFAULT; });
 /* unused harmony export dynamicConfig */
-/* harmony export (immutable) */ __webpack_exports__["d"] = prefixLocalStorageFactory;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return prefixLocalstorage; });
+/* harmony export (immutable) */ __webpack_exports__["c"] = prefixLocalStorageFactory;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return prefixLocalstorage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_CONFIG_TOKEN; });
 /* unused harmony export BACKEND_RES_LOGIN */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -1257,7 +1260,7 @@ var StorageProviderLocal = /** @class */ (function (_super) {
     };
     StorageProviderLocal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["e" /* prefixLocalstorage */])),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["d" /* prefixLocalstorage */])),
         __metadata("design:paramtypes", [Object, __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* Events */], String])
     ], StorageProviderLocal);
     return StorageProviderLocal;
