@@ -116,8 +116,6 @@ export class MyApp {
     translate.setDefaultLang('en');
     this.selectedLanguage = { key: 'en', name: 'English' };
     this.languages.push(this.selectedLanguage);
-    this.languages.push({ key: 'ro', name: 'Română' });
-    this.languages.push({ key: 'hu', name: 'Magyar' });
 
     platform.ready().then(() => {
       this.pages = this.userPages;

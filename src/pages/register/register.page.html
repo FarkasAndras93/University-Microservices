@@ -1,0 +1,29 @@
+<simple-app-header [header]="headerModel"></simple-app-header>
+
+<ion-content padding>
+  <form name="registerForm" #f="ngForm">
+    <ion-list>
+      <ion-item>
+        <ion-input placeholder="Name" id="login_name" type="text" required [(ngModel)]="user.name"
+          name="login_name" #name="ngModel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          class="user-input"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Username" id="login_username" type="text" required [(ngModel)]="user.username"
+          name="login_username" #name="ngModel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+          class="user-input"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Passwort" id="login_password" type="password" [(ngModel)]="user.password" name="login_password"
+          #name="ngModel" class="password-input"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input placeholder="Confirm passwort" type="password" [(ngModel)]="confirmPassword" name="register_confrim_password"
+          #name="ngModel" class="password-input"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <button color="light" id="register_registerSaveButton" (click)="register()"  ion-button full i18n>Register</button>
+  </form>
+</ion-content>

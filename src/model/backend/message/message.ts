@@ -1,3 +1,4 @@
+import { User } from './../user/user';
 import { GlobalUtils } from "../../../utils/global-utils";
 
 export class MessageModel {
@@ -50,13 +51,18 @@ export class MessageModel {
      */
     public message: string;
 
-    constructor(name: string, phone: string, subject: string, message: string, email?: string) {
+    public userId: string;
+
+    constructor(name: string, phone: string, subject: string, message: string, email?: string, userId?: string) {
         this.name = name;
         this.phone = phone;
         this.subject = subject;
         this.message = message;
         if (!GlobalUtils.isUndefinedOrNull(email)){
             this.email = email;
+        }
+        if (!GlobalUtils.isUndefinedOrNull(userId)) {
+            this.userId = userId;
         }
     }
 }

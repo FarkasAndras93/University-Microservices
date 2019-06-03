@@ -30,6 +30,8 @@ export interface AppConfig {
 
   basePath?: string;
 
+  basePath2?: string;
+
   configChangedEvent?: string;
 
   openOrdersStorageKey?: string;
@@ -85,6 +87,8 @@ export const CONFIG_DEFAULT: AppConfig = {
   onlineEventKey: 'system:online',
 
   basePath: 'http://ec2-3-14-66-141.us-east-2.compute.amazonaws.com:8080/app',
+
+  basePath2: 'http://basepath2',
 
   configChangedEvent: 'config:changed',
 

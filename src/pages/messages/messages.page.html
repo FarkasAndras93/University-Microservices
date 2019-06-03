@@ -1,0 +1,47 @@
+<simple-app-header [header]="headerModel"></simple-app-header>
+
+<ion-content padding>
+  <div class="table-container">
+    <table>
+      <tr class="table-row table-title">
+        <th class="table-header pzn-col">
+          Name
+        </th>
+        <th class="table-header name-col">
+          Email
+        </th>
+        <th class="table-header stock-col">
+          Phone
+        </th>
+        <th class="table-header stock-number-col">
+          Subject
+        </th>
+        <th class="table-header stock-number-col">
+          Message
+        </th>    
+      </tr>
+      <tr class="table-row" *ngFor="let message of messages">
+        <td class="table-data pzn-col">
+          <!-- <span class="table-mobile-label">Name</span> -->
+          <span class="table-product-data">{{message.name}}</span>
+        </td>
+        <td class="table-data name-col">
+          <!-- <span class="table-mobile-label">Email</span> -->
+          <span class="table-product-data">{{message.email}}</span>
+        </td>
+        <td class="table-data stock-col">
+          <!-- <span class="table-mobile-label">Phone</span> -->
+          <span class="table-product-data">{{message.phone}}</span>
+        </td>
+        <td class="table-data stock-number-col">
+          <!-- <span class="table-mobile-label">Subject</span> -->
+          <span class="table-product-data">{{message.subject}}</span>
+        </td>
+        <td class="table-data stock-number-col">
+          <!-- <span class="table-mobile-label">Message</span> -->
+          <span class="table-product-data">{{message.message}}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</ion-content>

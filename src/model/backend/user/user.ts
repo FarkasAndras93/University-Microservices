@@ -11,6 +11,14 @@ export class User {
     public id: string;
 
     /**
+     * Name of the firma.
+     *
+     * @type {string}
+     * @memberof User
+     */
+    public name: string;
+
+    /**
      * User name.
      *
      * @type {string}
@@ -26,17 +34,10 @@ export class User {
      */
     public password: string;
 
-    /**
-     * Flag to know if user is admin.
-     *
-     * @type {boolean}
-     * @memberof User
-     */
-    public admin: boolean;
-
-    constructor(username: string, password: string, admin: boolean) {
+    
+    constructor(name: string, username: string, password: string) {
+        this.name = name;
         this.username = username;
         this.password = password;
-        this.admin = admin;
     }
 }

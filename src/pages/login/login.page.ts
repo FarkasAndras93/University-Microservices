@@ -38,16 +38,10 @@ export class LoginPage {
   constructor(public navCtrl: NavController, private toast: ToastProvider, private userProvider: UserProvider,
     private event: Events, private storage: StorageProvider, @Inject(APP_CONFIG_TOKEN) private config: AppConfig) {
     this.headerModel = new HeaderModel("Login page", HEADER_COLORS.BASE, true, new ButtonModel(undefined, undefined, undefined, undefined, HEADER_BUTTON_TYPE.MENU_TOGGLE.toString()));
-    this.user = new User("", "", false);
+    this.user = new User("", "", "");
   }
 
   ionViewDidLoad() {
-    //TODO - implement autologin
-    this.userProvider.getFromBackend2().then(result => {
-      this.customMsg = result;
-    }).catch(error => {
-      console.error(error);
-    })
   }
 
   /**
@@ -59,10 +53,9 @@ export class LoginPage {
   public login() {
     return this.userProvider.login(this.user.username, this.user.password)
       .then(response => {
-        this.navCtrl.setRoot("HomePage");
+        this.navCtrl.setRoot("MessagesPage");
         return response;
-      },
-        error => {
+      }, error => {
           console.log("Error on login: " + error);
           if (error.status === 401) {
             this.toast.showErrorMessage("Login data is not valid!");

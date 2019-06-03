@@ -1,16 +1,15 @@
 webpackJsonp([1],{
 
-/***/ 293:
+/***/ 294:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContactPageModule", function() { return ContactPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngx_translate_core__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__contact_page__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_simple_app_header_simple_app_header_module__ = __webpack_require__(298);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_simple_app_header_simple_app_header_module__ = __webpack_require__(299);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_page__ = __webpack_require__(302);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,33 +20,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var ContactPageModule = /** @class */ (function () {
-    function ContactPageModule() {
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
     }
-    ContactPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
+    LoginPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__contact_page__["a" /* ContactPage */]
+                __WEBPACK_IMPORTED_MODULE_3__login_page__["a" /* LoginPage */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__contact_page__["a" /* ContactPage */]),
-                __WEBPACK_IMPORTED_MODULE_4__components_simple_app_header_simple_app_header_module__["a" /* SimpleAppHeaderModule */],
-                __WEBPACK_IMPORTED_MODULE_0__ngx_translate_core__["b" /* TranslateModule */]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__login_page__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_2__components_simple_app_header_simple_app_header_module__["a" /* SimpleAppHeaderModule */]
             ],
             exports: [
-                __WEBPACK_IMPORTED_MODULE_3__contact_page__["a" /* ContactPage */]
+                __WEBPACK_IMPORTED_MODULE_3__login_page__["a" /* LoginPage */]
             ]
         })
-    ], ContactPageModule);
-    return ContactPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=contact.page.module.js.map
+//# sourceMappingURL=login.page.module.js.map
 
 /***/ }),
 
-/***/ 295:
+/***/ 297:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -86,15 +83,15 @@ var HeaderModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 296:
+/***/ 298:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HEADER_BUTTON_TYPE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SimpleAppHeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_frontend_common_HeaderModel__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_frontend_common_HeaderModel__ = __webpack_require__(297);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -261,7 +258,7 @@ var SimpleAppHeaderComponent = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: "simple-app-header",template:/*ion-inline-start:"E:\dev\University-Microservices\University-Microservices\src\components\simple-app-header\simple-app-header.component.html"*/'<ion-header>\n\n  <ion-navbar [color]="header.navbarColor" [hideBackButton]="header.hideDefaultBackBtn">\n\n    <ion-buttons left>\n\n      <button ion-button menuToggle icon-only *ngIf="header.leftButton?.type == headerButtonType.MENU_TOGGLE">\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      <button class="back-button" (click)="onBackButtonClick()" *ngIf="header.leftButton?.type == headerButtonType.BACK">\n\n        <ion-icon name="arrow-back"></ion-icon>\n\n        <span>{{header.leftButton?.text}}</span>\n\n      </button>\n\n    </ion-buttons>\n\n    <ion-title *ngIf="!showSearch">{{(\'menu.\' + header.pageTitle) | translate}}</ion-title>\n\n    <div *ngIf="showSearch">\n\n      <ion-input class="search-input" placeholder="Suchen" [(ngModel)]="search" (input)="searchType()" autofocus #searchInput></ion-input>\n\n        <button ion-button (click)="clearSearch(true)" *ngIf="search != \'\'" class="clear-btn">\n\n          <ion-icon name="close" class="clear-icon"></ion-icon>\n\n        </button>\n\n    </div>\n\n\n\n    <ion-buttons right>\n\n      <button ion-button category="bar-button" (click)="toggleSearch()" *ngIf="header.rightButton?.type == headerButtonType.SEARCH">\n\n        <ion-icon ios="ios-search" md="ios-search"></ion-icon>\n\n      </button>\n\n      <button class="save-button" (click)="onSaveButtonClick()" *ngIf="header.rightButton?.type == headerButtonType.SAVE">\n\n        <ion-icon name="checkmark"></ion-icon>\n\n        <span>{{header.rightButton?.text}}</span>\n\n      </button>\n\n      <button class="close-button" (click)="onCloseButtonClick()" *ngIf="header.rightButton?.type == headerButtonType.CLOSE">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n    </ion-buttons>\n\n  </ion-navbar>\n\n</ion-header>'/*ion-inline-end:"E:\dev\University-Microservices\University-Microservices\src\components\simple-app-header\simple-app-header.component.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* ViewController */]])
     ], SimpleAppHeaderComponent);
     return SimpleAppHeaderComponent;
 }());
@@ -270,43 +267,15 @@ var SimpleAppHeaderComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 297:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonModel; });
-var ButtonModel = /** @class */ (function () {
-    function ButtonModel(text, value, bgColor, inactive, type) {
-        this.text = text;
-        if (value) {
-            this.value = value;
-        }
-        if (bgColor) {
-            this.bgColor = bgColor;
-        }
-        if (inactive != undefined) {
-            this.inactive = inactive;
-        }
-        if (type) {
-            this.type = type;
-        }
-    }
-    return ButtonModel;
-}());
-
-//# sourceMappingURL=ButtonModel.js.map
-
-/***/ }),
-
-/***/ 298:
+/***/ 299:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SimpleAppHeaderModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngx_translate_core__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngx_translate_core__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__simple_app_header_component__ = __webpack_require__(296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__simple_app_header_component__ = __webpack_require__(298);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -341,21 +310,49 @@ var SimpleAppHeaderModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 299:
+/***/ 300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_component__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__model_backend_message_message__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_product_product_provider__ = __webpack_require__(209);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__model_frontend_common_HeaderModel__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__model_frontend_common_ButtonModel__ = __webpack_require__(297);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_simple_app_header_simple_app_header_component__ = __webpack_require__(296);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__ = __webpack_require__(207);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_tehnical_storage_storage_provider__ = __webpack_require__(29);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ButtonModel; });
+var ButtonModel = /** @class */ (function () {
+    function ButtonModel(text, value, bgColor, inactive, type) {
+        this.text = text;
+        if (value) {
+            this.value = value;
+        }
+        if (bgColor) {
+            this.bgColor = bgColor;
+        }
+        if (inactive != undefined) {
+            this.inactive = inactive;
+        }
+        if (type) {
+            this.type = type;
+        }
+    }
+    return ButtonModel;
+}());
+
+//# sourceMappingURL=ButtonModel.js.map
+
+/***/ }),
+
+/***/ 302:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_frontend_common_HeaderModel__ = __webpack_require__(297);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__model_frontend_common_ButtonModel__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_simple_app_header_simple_app_header_component__ = __webpack_require__(298);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_tehnical_toast_toast_provider__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_user_user_provider__ = __webpack_require__(207);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_storage_storage_provider__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_app_config__ = __webpack_require__(33);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -365,6 +362,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 
 
 
@@ -375,78 +375,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ContactPage = /** @class */ (function () {
-    function ContactPage(navCtrl, productProvider, modalCtrl, toast, alertCtrl, storage) {
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, toast, userProvider, event, storage, config) {
         this.navCtrl = navCtrl;
-        this.productProvider = productProvider;
-        this.modalCtrl = modalCtrl;
         this.toast = toast;
-        this.alertCtrl = alertCtrl;
+        this.userProvider = userProvider;
+        this.event = event;
         this.storage = storage;
-        this.headerModel = new __WEBPACK_IMPORTED_MODULE_5__model_frontend_common_HeaderModel__["b" /* HeaderModel */](__WEBPACK_IMPORTED_MODULE_0__app_app_component__["a" /* MENU_TITLE */].CONTACT, __WEBPACK_IMPORTED_MODULE_5__model_frontend_common_HeaderModel__["a" /* HEADER_COLORS */].BASE, true, new __WEBPACK_IMPORTED_MODULE_6__model_frontend_common_ButtonModel__["a" /* ButtonModel */](undefined, undefined, undefined, undefined, __WEBPACK_IMPORTED_MODULE_7__components_simple_app_header_simple_app_header_component__["a" /* HEADER_BUTTON_TYPE */].MENU_TOGGLE.toString()));
-        this.message = new __WEBPACK_IMPORTED_MODULE_1__model_backend_message_message__["a" /* MessageModel */]("", "", "", "", "");
+        this.config = config;
+        this.headerModel = new __WEBPACK_IMPORTED_MODULE_3__model_frontend_common_HeaderModel__["b" /* HeaderModel */]("Login page", __WEBPACK_IMPORTED_MODULE_3__model_frontend_common_HeaderModel__["a" /* HEADER_COLORS */].BASE, true, new __WEBPACK_IMPORTED_MODULE_4__model_frontend_common_ButtonModel__["a" /* ButtonModel */](undefined, undefined, undefined, undefined, __WEBPACK_IMPORTED_MODULE_5__components_simple_app_header_simple_app_header_component__["a" /* HEADER_BUTTON_TYPE */].MENU_TOGGLE.toString()));
+        this.user = new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("", "", "");
     }
-    ContactPage.prototype.ionViewDidLoad = function () {
+    LoginPage.prototype.ionViewDidLoad = function () {
     };
     /**
-     * Method to add product in my fridge.
+     * Performs a login
      *
-     * @memberof MyFridgePage
+     * @returns {Promise<LoginResponseDTO>}
+     * @memberof LoginPage
      */
-    ContactPage.prototype.sendMessage = function () {
-        // let modal = this.modalCtrl.create('ProductNewPage');
-        // modal.present();
-        // modal.onDidDismiss(result => {
-        //   if (!GlobalUtils.isUndefinedOrNull(result)) {
-        //     if (result instanceof MyProduct) {
-        //       this.productProvider.addProductInFridge(result).then(newProduct => {
-        //         this.myProducts.push(result);
-        //         this.toast.showSuccessMessage("Product added with success.");
-        //       }).catch(err => {
-        //         console.error("Failed to add new product in my fridge!", err);
-        //         this.toast.showErrorMessage("Add product failed!");
-        //       })
-        //     } else {
-        //       this.toast.showErrorMessage("Add product failed!");
-        //     }
-        //   }
-        // });
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        return this.userProvider.login(this.user.username, this.user.password)
+            .then(function (response) {
+            _this.navCtrl.setRoot("MessagesPage");
+            return response;
+        }, function (error) {
+            console.log("Error on login: " + error);
+            if (error.status === 401) {
+                _this.toast.showErrorMessage("Login data is not valid!");
+            }
+            else {
+                _this.toast.showErrorMessage("Unkown error on login!");
+            }
+            return error;
+        });
     };
-    ContactPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["m" /* Component */])({
-            selector: 'contact',template:/*ion-inline-start:"E:\dev\University-Microservices\University-Microservices\src\pages\contact\contact.page.html"*/'<simple-app-header [header]="headerModel"></simple-app-header>\n\n\n\n<ion-content padding>\n\n\n\n  <ion-list>\n\n    <ion-item-group>\n\n      <ion-list-header>{{\'contact.header.info\' | translate}}</ion-list-header>\n\n      <ion-item>\n\n          <h3>{{\'contact.info.location\' | translate}}:</h3>\n\n          <p>{{\'contact.info.location-value\' | translate}}</p>\n\n          <h3>{{\'contact.info.phone\' | translate}}:</h3>\n\n          <p>0756-380-738</p>\n\n          <p>0724-226-171</p>\n\n          <h3>{{\'contact.info.working-hours\' | translate}}</h3>\n\n          <p>{{\'contact.info.open-week\' | translate}}: 8:00 - 18:30</p>\n\n          <p>{{\'contact.info.open-weekend\' | translate}}: 8:00 - 13:00</p>\n\n          <a href="tel:+497142588663" item-end>\n\n            <ion-icon name="call" item-end></ion-icon>\n\n          </a>\n\n        </ion-item>\n\n    </ion-item-group>\n\n\n\n    <ion-item-group>\n\n      <ion-list-header>{{\'contact.header.message\' | translate}}</ion-list-header>\n\n      <ion-item>\n\n        <ion-label>{{\'contact.name\' | translate}}:</ion-label>\n\n        <ion-input [(ngModel)]="message.name"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label>{{\'contact.email\' | translate}}:</ion-label>\n\n        <ion-input [(ngModel)]="message.email"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label>{{\'contact.phone\' | translate}}:</ion-label>\n\n        <ion-input [(ngModel)]="message.phone"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label>{{\'contact.subject\' | translate}}:</ion-label>\n\n        <ion-input [(ngModel)]="message.subject"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <ion-label>{{\'contact.message\' | translate}}:</ion-label>\n\n        <ion-textarea rows="5" [(ngModel)]="message.message" class="task-description-area"></ion-textarea>\n\n      </ion-item>\n\n      <button ion-button full (click)="sendMessage()" expand="block">{{\'button.send\' | translate}}</button>\n\n    </ion-item-group>\n\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"E:\dev\University-Microservices\University-Microservices\src\pages\contact\contact.page.html"*/
+    /**
+     * Load register page.
+     *
+     * @memberof LoginPage
+     */
+    LoginPage.prototype.register = function () {
+        this.navCtrl.push("RegisterPage");
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'login',template:/*ion-inline-start:"E:\dev\University-Microservices\University-Microservices\src\pages\login\login.page.html"*/'<simple-app-header [header]="headerModel"></simple-app-header>\n\n\n\n<ion-content padding>\n\n  <form name="loginForm" #f="ngForm">\n\n    <ion-list>\n\n      <ion-item>\n\n        <ion-label>\n\n          {{customMsg}}\n\n        </ion-label>\n\n      </ion-item>\n\n      <ion-item>\n\n        <img item-start src="assets/imgs/login-icon-user.svg" width="24" height="24" />\n\n        <ion-input placeholder="Username" id="login_username" type="text" required [(ngModel)]="user.username"\n\n          name="login_username" #name="ngModel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"\n\n          class="user-input"></ion-input>\n\n      </ion-item>\n\n      <ion-item>\n\n        <img item-start src="assets/imgs/login-icon-password.svg" width="24" height="24" />\n\n        <ion-input placeholder="Password" id="login_password" type="password" [(ngModel)]="user.password" name="login_password"\n\n          #name="ngModel" class="password-input"></ion-input>\n\n      </ion-item>\n\n\n\n      \n\n    </ion-list>\n\n\n\n    <button id="login_loginButton" (click)="login()" [disabled]="!f.form.valid" ion-button full i18n>Login</button>\n\n    <button color="light" id="register_registerButton" (click)="register()"  ion-button full i18n>Register</button>\n\n  </form>\n\n</ion-content>'/*ion-inline-end:"E:\dev\University-Microservices\University-Microservices\src\pages\login\login.page.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_4__providers_product_product_provider__["a" /* ProductProvider */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["g" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__["a" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_9__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */]])
-    ], ContactPage);
-    return ContactPage;
+        __param(5, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_9__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_6__providers_tehnical_toast_toast_provider__["a" /* ToastProvider */], __WEBPACK_IMPORTED_MODULE_7__providers_user_user_provider__["a" /* UserProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */], Object])
+    ], LoginPage);
+    return LoginPage;
 }());
 
-//# sourceMappingURL=contact.page.js.map
-
-/***/ }),
-
-/***/ 300:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageModel; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_global_utils__ = __webpack_require__(56);
-
-var MessageModel = /** @class */ (function () {
-    function MessageModel(name, phone, subject, message, email) {
-        this.name = name;
-        this.phone = phone;
-        this.subject = subject;
-        this.message = message;
-        if (!__WEBPACK_IMPORTED_MODULE_0__utils_global_utils__["a" /* GlobalUtils */].isUndefinedOrNull(email)) {
-            this.email = email;
-        }
-    }
-    return MessageModel;
-}());
-
-//# sourceMappingURL=message.js.map
+//# sourceMappingURL=login.page.js.map
 
 /***/ })
 
