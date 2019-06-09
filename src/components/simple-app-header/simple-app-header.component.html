@@ -9,7 +9,7 @@
         <span>{{header.leftButton?.text}}</span>
       </button>
     </ion-buttons>
-    <ion-title *ngIf="!showSearch">{{('menu.' + header.pageTitle) | translate}}</ion-title>
+    <ion-title *ngIf="!showSearch">{{header.pageTitle}}</ion-title>
     <div *ngIf="showSearch">
       <ion-input class="search-input" placeholder="Suchen" [(ngModel)]="search" (input)="searchType()" autofocus #searchInput></ion-input>
         <button ion-button (click)="clearSearch(true)" *ngIf="search != ''" class="clear-btn">

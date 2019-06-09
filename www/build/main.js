@@ -489,15 +489,16 @@ var UserProvider = /** @class */ (function () {
     //TODO - encode in md5 the password
     UserProvider.prototype.login = function (username, password) {
         var hash = __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__["Md5"].hashStr("password");
-        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, { accessToken: "asd" });
         return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username2", ""));
         // return new Promise((resolve, reject) => {
         //   let headers = new HttpHeaders();
         //   headers.append('Content-Type', 'application/json');
         //   this.http.post(this.config.basePath2 + "/login",
         //     { "username": username, "password": hash.toString() }, { headers: headers }
-        //   ).subscribe((loggedUser: any) => {
+        //   ).subscribe((token: any) => {
         //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        //     this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, token);
         //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
         //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
         //     return resolve(loggedUser);
@@ -1015,8 +1016,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__["a" /* UserProvider */],
                 __WEBPACK_IMPORTED_MODULE_0__providers_message_message_provider__["a" /* MessageProvider */],
                 { provide: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */], useClass: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["b" /* StorageProviderLocal */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["b" /* CONFIG_DEFAULT */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* prefixLocalStorageFactory */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* CONFIG_DEFAULT */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["e" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalStorageFactory */] },
             ]
         })
     ], AppModule);
@@ -1036,10 +1037,10 @@ function HttpLoaderFactory(http) {
 "use strict";
 /* unused harmony export DEFAULT_LOGIN_CONFIG */
 /* unused harmony export DEFAULT_STATISTIC_CONFIG */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONFIG_DEFAULT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CONFIG_DEFAULT; });
 /* unused harmony export dynamicConfig */
-/* harmony export (immutable) */ __webpack_exports__["c"] = prefixLocalStorageFactory;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return prefixLocalstorage; });
+/* harmony export (immutable) */ __webpack_exports__["d"] = prefixLocalStorageFactory;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return prefixLocalstorage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_CONFIG_TOKEN; });
 /* unused harmony export BACKEND_RES_LOGIN */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -1260,7 +1261,7 @@ var StorageProviderLocal = /** @class */ (function (_super) {
     };
     StorageProviderLocal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["d" /* prefixLocalstorage */])),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["e" /* prefixLocalstorage */])),
         __metadata("design:paramtypes", [Object, __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* Events */], String])
     ], StorageProviderLocal);
     return StorageProviderLocal;

@@ -4,11 +4,6 @@
   <form name="loginForm" #f="ngForm">
     <ion-list>
       <ion-item>
-        <ion-label>
-          {{customMsg}}
-        </ion-label>
-      </ion-item>
-      <ion-item>
         <img item-start src="assets/imgs/login-icon-user.svg" width="24" height="24" />
         <ion-input placeholder="Username" id="login_username" type="text" required [(ngModel)]="user.username"
           name="login_username" #name="ngModel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
@@ -19,7 +14,11 @@
         <ion-input placeholder="Password" id="login_password" type="password" [(ngModel)]="user.password" name="login_password"
           #name="ngModel" class="password-input"></ion-input>
       </ion-item>
-
+      <ion-item class="remember-me">
+        <ion-label i18n>Auto login</ion-label>
+        <ion-toggle id="login_enableAutoLogin" [(ngModel)]="autologin" name="login_enableAutoLogin"
+          #name="ngModel"></ion-toggle>
+      </ion-item>
       
     </ion-list>
 

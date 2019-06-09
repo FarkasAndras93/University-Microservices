@@ -1,3 +1,4 @@
+import { GlobalUtils } from './../../utils/global-utils';
 import { Component, Inject } from '@angular/core';
 import { NavController, IonicPage, Events } from 'ionic-angular';
 import { User } from '../../model/backend/user/user';
@@ -32,7 +33,13 @@ export class LoginPage {
    */
   public headerModel: HeaderModel;
 
-  public customMsg: string;
+  /**
+   * Boolean variable for autologin
+   *
+   * @type {boolean}
+   * @memberof LoginPage
+   */
+  public autologin: boolean;
 
 
   constructor(public navCtrl: NavController, private toast: ToastProvider, private userProvider: UserProvider,
@@ -41,7 +48,21 @@ export class LoginPage {
     this.user = new User("", "", "");
   }
 
-  ionViewDidLoad() {
+  /**
+   * On Enter action
+   *
+   * @memberof LoginPage
+   */
+  ionViewDidEnter() {
+    this.userProvider.autoLogin().then(
+      () => {
+        console.log("autologin successful");
+        this.navCtrl.setRoot("MessagesPage");
+      },
+      () => {
+        console.log("Autologin failed");
+      }
+    );
   }
 
   /**
