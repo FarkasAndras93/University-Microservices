@@ -59,9 +59,14 @@ export class RegisterPage {
   public async register() {
     if (this.validate()) {
       try {
-        this.userProvider.register(this.user.name, this.user.username, this.user.password);
-        this.toast.showSuccessMessage("You have registered successfully!", undefined, false);
-        this.navCtrl.popTo("LoginPage");
+        this.userProvider.register(this.user.name, this.user.username, this.user.password).then(result => {
+          if (result) {
+            this.toast.showSuccessMessage("You have registered successfully!", undefined, false);
+            this.navCtrl.popTo("LoginPage");
+          } else {
+            this.toast.showSuccessMessage("Registration failed!", undefined, false);
+          }
+        });
       } catch (e) {
         this.toast.showErrorMessage("Could not register!");
         console.error("Error in register", e);

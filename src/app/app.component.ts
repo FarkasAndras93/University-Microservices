@@ -164,6 +164,7 @@ export class MyApp {
    * @memberof MyApp
    */
   private logoutEventComplete = () => {
+    this.nav.setRoot("LoginPage");
     this.pages = this.userPages;
     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, false);
     this.storage.clearConfig(this.config.loginConfig.loggedInUser);
@@ -181,9 +182,9 @@ export class MyApp {
 
       if (page.title == MENU_TITLE.LOGOUT) {
         this.event.publish(this.config.loginConfig.logoutEventKey);
+      } else {
+        this.nav.setRoot(page.component);
       }
-
-      this.nav.setRoot(page.component);
     }
   }
 

@@ -286,19 +286,19 @@ webpackEmptyAsyncContext.id = 120;
 
 var map = {
 	"../pages/contact/contact.page.module": [
-		308,
+		306,
 		2
 	],
 	"../pages/login/login.page.module": [
-		309,
-		1
-	],
-	"../pages/messages/messages.page.module": [
-		310,
+		308,
 		0
 	],
+	"../pages/messages/messages.page.module": [
+		307,
+		1
+	],
 	"../pages/register/register.page.module": [
-		311,
+		309,
 		3
 	]
 };
@@ -419,13 +419,10 @@ var ToastProvider = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_config__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth0_angular_jwt__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tehnical_storage_storage_provider__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__auth0_angular_jwt__ = __webpack_require__(269);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -479,8 +476,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
 var ACCESS_TOKEN_KEYS;
 (function (ACCESS_TOKEN_KEYS) {
     ACCESS_TOKEN_KEYS["USER_ID"] = "userId";
@@ -507,9 +502,11 @@ var UserProvider = /** @class */ (function () {
             headers.append('Content-Type', 'application/json');
             _this.http.post(_this.config.basePath2 + "/login", { "username": username, "password": password }, { headers: headers }).subscribe(function (token) {
                 _this._accessToken = token.accessToken;
+                _this.refreshTokenBeforeExpire(token.accessToken);
                 _this.event.publish(_this.config.loginConfig.loggedInCompleteEventKey);
                 _this.event.publish(_this.config.loginConfig.updatedTokensAvailableEventKey, token);
                 _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, true);
+                _this.storage.saveLocal(_this.config.loginConfig.refreshToken, token.refreshToken);
                 // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
                 return resolve(token);
             }, function (error) {
@@ -520,23 +517,22 @@ var UserProvider = /** @class */ (function () {
     };
     //TODO - encode in md5 the password
     UserProvider.prototype.register = function (name, username, password) {
-        var hash = __WEBPACK_IMPORTED_MODULE_6_ts_md5_dist_md5__["Md5"].hashStr("password");
-        return Promise.resolve(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", "Username1", hash.toString()));
-        // return new Promise((resolve, reject) => {
-        //   let headers = new HttpHeaders();
-        //   headers.append('Content-Type', 'application/json');
-        //   this.http.put(this.config.basePath2 + "/register",
-        //     { "name": name, "username": username, "password": hash }, { headers: headers }
-        //   ).subscribe((loggedUser: any) => {
-        //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-        //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-        //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
-        //     return resolve(loggedUser);
-        //   }, error => {
-        //     console.error("Error while loggin in application", error);
-        //     return reject(error);
-        //   });
-        // });
+        // let hash = Md5.hashStr("password");
+        // return Promise.resolve(new User("Name1", "Username1", hash.toString()));
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpHeaders */]();
+            headers.append('Content-Type', 'application/json');
+            _this.http.put(_this.config.basePath2 + "/register", { "name": name, "username": username, "password": password }, { headers: headers }).subscribe(function (result) {
+                _this.event.publish(_this.config.loginConfig.loggedInCompleteEventKey);
+                _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, true);
+                // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
+                return resolve(result);
+            }, function (error) {
+                console.error("Error while loggin in application", error);
+                return reject(error);
+            });
+        });
     };
     /**
    * Method to return messages for logged user.
@@ -545,20 +541,30 @@ var UserProvider = /** @class */ (function () {
    */
     UserProvider.prototype.getAllUsers = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var users;
+            var _this = this;
             return __generator(this, function (_a) {
-                users = [];
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name1", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name2", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name3", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name4", undefined, undefined));
-                users.push(new __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__["a" /* User */]("Name5", undefined, undefined));
-                users[0].id = "1";
-                users[1].id = "2";
-                users[2].id = "3";
-                users[3].id = "4";
-                users[4].id = "5";
-                return [2 /*return*/, Promise.resolve(users)];
+                // let users: User[] = [];
+                // users.push(new User("Name1", undefined, undefined));
+                // users.push(new User("Name2", undefined, undefined));
+                // users.push(new User("Name3", undefined, undefined));
+                // users.push(new User("Name4", undefined, undefined));
+                // users.push(new User("Name5", undefined, undefined));
+                // users[0].id = "1";
+                // users[1].id = "2";
+                // users[2].id = "3";
+                // users[3].id = "4";
+                // users[4].id = "5";
+                // return Promise.resolve(users);
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpHeaders */]();
+                        headers.append('Content-Type', 'application/json');
+                        _this.http.get(_this.config.basePath2 + "/users/get", { headers: headers }).subscribe(function (users) {
+                            return resolve(users);
+                        }, function (error) {
+                            console.error("Error while getting users", error);
+                            return reject(error);
+                        });
+                    })];
             });
         });
     };
@@ -570,9 +576,46 @@ var UserProvider = /** @class */ (function () {
      */
     UserProvider.prototype.autoLogin = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
-                this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-                return [2 /*return*/, Promise.resolve(true)];
+                // this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+                // return Promise.resolve(true);
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var token = _this.storage.getLocal(_this.config.loginConfig.refreshToken); //.then(
+                        //  token => {
+                        console.log("refresher token stored", token);
+                        if (token != undefined && token != null && new Date(_this.getValueFromToken(token, ACCESS_TOKEN_KEYS.EXPIRATION_TIME)) > new Date()) {
+                            console.log("Asking for new refresher token");
+                            var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpHeaders */]();
+                            headers.append('Content-Type', 'application/json');
+                            _this.http.post(_this.config.basePath2 + "/renew", { "userId": token.userId, "expiration": token.expiration }, { headers: headers }).subscribe(function (token) {
+                                _this.storage.saveLocal(_this.config.loginConfig.accessToken, token.accessToken); //lazy loaded modules can't wait till next refresh event
+                                _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, true);
+                                _this.storage.saveLocal(_this.config.loginConfig.refreshToken, token.refreshToken); //.then(
+                                // () => {
+                                _this.event.publish(_this.config.loginConfig.updatedTokensAvailableEventKey, token);
+                                _this._accessToken = token.accessToken;
+                                _this.event.publish(_this.config.loginConfig.loggedInCompleteEventKey);
+                                _this.refreshTokenBeforeExpire(token.accessToken);
+                                resolve(true);
+                            }, function () {
+                                resolve(true);
+                            });
+                            // },
+                            //   () => {
+                            //     reject();
+                            //   }
+                            // );
+                        }
+                        else {
+                            _this.event.publish(_this.config.loginConfig.logoutEventKey);
+                        }
+                        //},
+                        // () => {
+                        //   reject();
+                        // }
+                        //);
+                    })];
             });
         });
     };
@@ -587,7 +630,7 @@ var UserProvider = /** @class */ (function () {
         if (!this._accessToken) {
             return null;
         }
-        var helper = new __WEBPACK_IMPORTED_MODULE_7__auth0_angular_jwt__["a" /* JwtHelperService */]();
+        var helper = new __WEBPACK_IMPORTED_MODULE_5__auth0_angular_jwt__["a" /* JwtHelperService */]();
         var payload = helper.decodeToken(this._accessToken);
         return payload[key];
     };
@@ -602,14 +645,16 @@ var UserProvider = /** @class */ (function () {
         if (!token) {
             return null;
         }
-        var helper = new __WEBPACK_IMPORTED_MODULE_7__auth0_angular_jwt__["a" /* JwtHelperService */]();
-        var payload = helper.decodeToken(token);
-        return payload[key];
+        // let helper: JwtHelperService = new JwtHelperService();
+        // let payload = helper.decodeToken(token);
+        // return payload[key];
+        return token.expiration;
     };
     UserProvider.prototype.refreshTokenBeforeExpire = function (token) {
         var _this = this;
-        var jwtHelper = new __WEBPACK_IMPORTED_MODULE_7__auth0_angular_jwt__["a" /* JwtHelperService */]();
-        var expTime = jwtHelper.getTokenExpirationDate(token);
+        // let jwtHelper: JwtHelperService = new JwtHelperService();
+        // let expTime = jwtHelper.getTokenExpirationDate(token);
+        var expTime = new Date(token.expiration);
         var diff = expTime.getTime() - new Date().getTime() - 60 * 1000;
         console.log("Refresh starts in ", diff);
         if (!this.refreshUpdateStarted) {
@@ -622,10 +667,11 @@ var UserProvider = /** @class */ (function () {
     };
     UserProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* Events */], Object, __WEBPACK_IMPORTED_MODULE_5__tehnical_storage_storage_provider__["a" /* StorageProvider */]])
+        __param(2, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3__app_app_config__["a" /* APP_CONFIG_TOKEN */])),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* Events */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__app_app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__app_app_config__["AppConfig"]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _d || Object])
     ], UserProvider);
     return UserProvider;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=user.provider.js.map
@@ -637,7 +683,7 @@ var UserProvider = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_backend_message_message__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__model_backend_message_message__ = __webpack_require__(215);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tehnical_storage_storage_provider__ = __webpack_require__(42);
@@ -757,24 +803,6 @@ var MessageProvider = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-var User = /** @class */ (function () {
-    function User(name, username, password) {
-        this.name = name;
-        this.username = username;
-        this.password = password;
-    }
-    return User;
-}());
-
-//# sourceMappingURL=user.js.map
-
-/***/ }),
-
-/***/ 215:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_TITLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -890,6 +918,7 @@ var MyApp = /** @class */ (function () {
          * @memberof MyApp
          */
         this.logoutEventComplete = function () {
+            _this.nav.setRoot("LoginPage");
             _this.pages = _this.userPages;
             _this.storage.saveLocal(_this.config.loginConfig.hasLoggedIn, false);
             _this.storage.clearConfig(_this.config.loginConfig.loggedInUser);
@@ -930,7 +959,9 @@ var MyApp = /** @class */ (function () {
             if (page.title == MENU_TITLE.LOGOUT) {
                 this.event.publish(this.config.loginConfig.logoutEventKey);
             }
-            this.nav.setRoot(page.component);
+            else {
+                this.nav.setRoot(page.component);
+            }
         }
     };
     /**
@@ -946,23 +977,23 @@ var MyApp = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]) === "function" && _a || Object)
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"E:\dev\University-Microservices\University-Microservices\src\app\app.html"*/'<ion-split-pane>\n\n    <ion-menu [content]="content" *ngIf="pages?.length > 0">\n\n        <ion-content padding>\n\n            <ion-list>\n\n                <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n\n                    <ion-icon name="{{p.icon}}" item-start></ion-icon>\n\n                    <ion-badge *ngIf="p.badgeRight" color="{{p.badgeColor}}" item-end>{{p.badgeValue}}</ion-badge>\n\n                    {{\'menu.\' + p.title | translate}}\n\n                </button>\n\n\n\n            </ion-list>\n\n        </ion-content>\n\n    </ion-menu>\n\n\n\n    <ion-nav id="nav" [root]="rootPage" main #content swipeBackEnabled="false"></ion-nav>\n\n</ion-split-pane>'/*ion-inline-end:"E:\dev\University-Microservices\University-Microservices\src\app\app.html"*/
         }),
         __param(4, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_4__app_config__["a" /* APP_CONFIG_TOKEN */])),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */], Object, __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* Events */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__app_config__["AppConfig"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__app_config__["AppConfig"]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__ngx_translate_core__["c" /* TranslateService */]) === "function" && _h || Object])
     ], MyApp);
     return MyApp;
+    var _a, _b, _c, _d, _e, _f, _g, _h;
 }());
 
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
 
-/***/ 216:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -989,13 +1020,13 @@ var MessageModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 217:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(234);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1003,7 +1034,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 235:
+/***/ 234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1016,13 +1047,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(168);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common_http__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_tehnical_toast_toast_provider__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_config__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ngx_translate_core__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ngx_translate_http_loader__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ngx_translate_http_loader__ = __webpack_require__(305);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1057,8 +1088,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["b" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/contact/contact.page.module#ContactPageModule', name: 'ContactPage', segment: 'contact.page', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/login/login.page.module#LoginPageModule', name: 'LoginPage', segment: 'login.page', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/messages/messages.page.module#MessagesPageModule', name: 'MessagesPage', segment: 'messages.page', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.page.module#LoginPageModule', name: 'LoginPage', segment: 'login.page', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.page.module#RegisterPageModule', name: 'RegisterPage', segment: 'register.page', priority: 'low', defaultHistory: [] }
                     ]
                 }),
@@ -1084,8 +1115,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__providers_user_user_provider__["a" /* UserProvider */],
                 __WEBPACK_IMPORTED_MODULE_0__providers_message_message_provider__["a" /* MessageProvider */],
                 { provide: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["a" /* StorageProvider */], useClass: __WEBPACK_IMPORTED_MODULE_10__providers_tehnical_storage_storage_provider__["b" /* StorageProviderLocal */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["b" /* CONFIG_DEFAULT */] },
-                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* prefixLocalStorageFactory */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["a" /* APP_CONFIG_TOKEN */], useValue: __WEBPACK_IMPORTED_MODULE_11__app_config__["c" /* CONFIG_DEFAULT */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_11__app_config__["e" /* prefixLocalstorage */], useFactory: __WEBPACK_IMPORTED_MODULE_11__app_config__["d" /* prefixLocalStorageFactory */] },
             ]
         })
     ], AppModule);
@@ -1105,10 +1136,10 @@ function HttpLoaderFactory(http) {
 "use strict";
 /* unused harmony export DEFAULT_LOGIN_CONFIG */
 /* unused harmony export DEFAULT_STATISTIC_CONFIG */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CONFIG_DEFAULT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CONFIG_DEFAULT; });
 /* unused harmony export dynamicConfig */
-/* harmony export (immutable) */ __webpack_exports__["c"] = prefixLocalStorageFactory;
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return prefixLocalstorage; });
+/* harmony export (immutable) */ __webpack_exports__["d"] = prefixLocalStorageFactory;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return prefixLocalstorage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APP_CONFIG_TOKEN; });
 /* unused harmony export BACKEND_RES_LOGIN */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
@@ -1329,7 +1360,7 @@ var StorageProviderLocal = /** @class */ (function (_super) {
     };
     StorageProviderLocal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["d" /* prefixLocalstorage */])),
+        __param(0, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["a" /* APP_CONFIG_TOKEN */])), __param(2, Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["z" /* Inject */])(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["e" /* prefixLocalstorage */])),
         __metadata("design:paramtypes", [Object, __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["b" /* Events */], String])
     ], StorageProviderLocal);
     return StorageProviderLocal;
@@ -1475,5 +1506,5 @@ var StorageProviderLocal = /** @class */ (function (_super) {
 
 /***/ })
 
-},[217]);
+},[216]);
 //# sourceMappingURL=main.js.map

@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 311:
+/***/ 309:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_page__ = __webpack_require__(319);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_simple_app_header_simple_app_header_module__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_page__ = __webpack_require__(318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_simple_app_header_simple_app_header_module__ = __webpack_require__(312);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -44,7 +44,7 @@ var RegisterPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 312:
+/***/ 310:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83,7 +83,7 @@ var HeaderModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 313:
+/***/ 311:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -91,7 +91,7 @@ var HeaderModel = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SimpleAppHeaderComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_frontend_common_HeaderModel__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_frontend_common_HeaderModel__ = __webpack_require__(310);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -267,7 +267,7 @@ var SimpleAppHeaderComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 314:
+/***/ 312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -275,7 +275,7 @@ var SimpleAppHeaderComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngx_translate_core__ = __webpack_require__(108);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__simple_app_header_component__ = __webpack_require__(313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__simple_app_header_component__ = __webpack_require__(311);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -310,15 +310,33 @@ var SimpleAppHeaderModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 319:
+/***/ 314:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
+var User = /** @class */ (function () {
+    function User(name, username, password) {
+        this.name = name;
+        this.username = username;
+        this.password = password;
+    }
+    return User;
+}());
+
+//# sourceMappingURL=user.js.map
+
+/***/ }),
+
+/***/ 318:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_frontend_common_HeaderModel__ = __webpack_require__(312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__model_backend_user_user__ = __webpack_require__(314);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__model_frontend_common_HeaderModel__ = __webpack_require__(310);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_tehnical_toast_toast_provider__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_global_utils__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user_provider__ = __webpack_require__(212);
@@ -396,12 +414,19 @@ var RegisterPage = /** @class */ (function () {
      */
     RegisterPage.prototype.register = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             return __generator(this, function (_a) {
                 if (this.validate()) {
                     try {
-                        this.userProvider.register(this.user.name, this.user.username, this.user.password);
-                        this.toast.showSuccessMessage("You have registered successfully!", undefined, false);
-                        this.navCtrl.popTo("LoginPage");
+                        this.userProvider.register(this.user.name, this.user.username, this.user.password).then(function (result) {
+                            if (result) {
+                                _this.toast.showSuccessMessage("You have registered successfully!", undefined, false);
+                                _this.navCtrl.popTo("LoginPage");
+                            }
+                            else {
+                                _this.toast.showSuccessMessage("Registration failed!", undefined, false);
+                            }
+                        });
                     }
                     catch (e) {
                         this.toast.showErrorMessage("Could not register!");

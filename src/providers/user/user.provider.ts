@@ -1,7 +1,7 @@
+import { User } from './../../model/backend/user/user';
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { GlobalUtils } from '../../utils/global-utils';
-import { User } from '../../model/backend/user/user';
 import { Events } from 'ionic-angular';
 import { AppConfig, APP_CONFIG_TOKEN } from '../../app/app.config';
 import { StorageProvider } from '../tehnical/storage/storage.provider';
@@ -41,10 +41,12 @@ export class UserProvider {
       this.http.post(this.config.basePath2 + "/login",
         { "username": username, "password": password }, { headers: headers }
       ).subscribe((token: any) => {
-           this._accessToken = token.accessToken;
+        this._accessToken = token.accessToken;
+        this.refreshTokenBeforeExpire(token.accessToken);
         this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
         this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, token);
         this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        this.storage.saveLocal(this.config.loginConfig.refreshToken, token.refreshToken);
         // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
         return resolve(token);
       }, error => {
@@ -55,26 +57,26 @@ export class UserProvider {
   }
 
   //TODO - encode in md5 the password
-  register(name: string, username: string, password: string): Promise<User> {
-    let hash = Md5.hashStr("password");
-    return Promise.resolve(new User("Name1", "Username1", hash.toString()));
+  register(name: string, username: string, password: string): Promise<boolean> {
+    // let hash = Md5.hashStr("password");
+    // return Promise.resolve(new User("Name1", "Username1", hash.toString()));
 
-    // return new Promise((resolve, reject) => {
-    //   let headers = new HttpHeaders();
-    //   headers.append('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
 
-    //   this.http.put(this.config.basePath2 + "/register",
-    //     { "name": name, "username": username, "password": hash }, { headers: headers }
-    //   ).subscribe((loggedUser: any) => {
-    //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-    //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-    //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
-    //     return resolve(loggedUser);
-    //   }, error => {
-    //     console.error("Error while loggin in application", error);
-    //     return reject(error);
-    //   });
-    // });
+      this.http.put(this.config.basePath2 + "/register",
+        { "name": name, "username": username, "password": password }, { headers: headers }
+      ).subscribe((result: boolean) => {
+        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
+        return resolve(result);
+      }, error => {
+        console.error("Error while loggin in application", error);
+        return reject(error);
+      });
+    });
   }
 
   /**
@@ -83,30 +85,30 @@ export class UserProvider {
  * @memberof ProductProvider
  */
   async getAllUsers(): Promise<any> {
-    let users: User[] = [];
-    users.push(new User("Name1", undefined, undefined));
-    users.push(new User("Name2", undefined, undefined));
-    users.push(new User("Name3", undefined, undefined));
-    users.push(new User("Name4", undefined, undefined));
-    users.push(new User("Name5", undefined, undefined));
-    users[0].id = "1";
-    users[1].id = "2";
-    users[2].id = "3";
-    users[3].id = "4";
-    users[4].id = "5";
-    return Promise.resolve(users);
+    // let users: User[] = [];
+    // users.push(new User("Name1", undefined, undefined));
+    // users.push(new User("Name2", undefined, undefined));
+    // users.push(new User("Name3", undefined, undefined));
+    // users.push(new User("Name4", undefined, undefined));
+    // users.push(new User("Name5", undefined, undefined));
+    // users[0].id = "1";
+    // users[1].id = "2";
+    // users[2].id = "3";
+    // users[3].id = "4";
+    // users[4].id = "5";
+    // return Promise.resolve(users);
 
-    // return new Promise((resolve, reject) => {
-    //   let headers = new HttpHeaders();
-    //   headers.append('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
 
-    //   this.http.get(this.config.basePath2 + "/users/get", { headers: headers }).subscribe((messages: MessageModel[]) => {
-    //     return resolve(messages);
-    //   }, error => {
-    //     console.error("Error while getting my messages", error);
-    //     return reject(error);
-    //   });
-    // });
+      this.http.get(this.config.basePath2 + "/users/get", { headers: headers }).subscribe((users: User[]) => {
+        return resolve(users);
+      }, error => {
+        console.error("Error while getting users", error);
+        return reject(error);
+      });
+    });
   }
 
   /**
@@ -116,50 +118,50 @@ export class UserProvider {
    * @memberof LoginProvider
    */
   public async autoLogin(): Promise<boolean> {
-    this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-    return Promise.resolve(true);
+    // this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+    // return Promise.resolve(true);
 
-    // return new Promise<boolean>((resolve, reject) => {
-    //   this.storage.getLocal(this.config.loginConfig.refreshToken).then(
-    //     token => {
-    //       console.log("refresher token stored", token);
-    //       if (token != undefined && token != null && this.getValueFromToken(token, ACCESS_TOKEN_KEYS.EXPIRATION_TIME) < new Date()) {
-    //         console.log("Asking for new refresher token");
-    //         let headers = new HttpHeaders();
-    //         headers.append('Content-Type', 'application/json');
+    return new Promise<boolean>((resolve, reject) => {
+      let token = this.storage.getLocal(this.config.loginConfig.refreshToken);//.then(
+      //  token => {
+          console.log("refresher token stored", token);
+          if (token != undefined && token != null && new Date(this.getValueFromToken(token, ACCESS_TOKEN_KEYS.EXPIRATION_TIME)) > new Date()) {
+            console.log("Asking for new refresher token");
+            let headers = new HttpHeaders();
+            headers.append('Content-Type', 'application/json');
 
-    //         this.http.post(this.config.basePath2 + "/renew", { "token": token }, { headers: headers }).subscribe((token: any) => {
-    //           this.storage.saveLocal(this.config.loginConfig.accessToken, token.accessToken); //lazy loaded modules can't wait till next refresh event
-    //           this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-    //           this.storage.saveLocal(this.config.loginConfig.refreshToken, token.refreshToken).then(
-    //             () => {
-    //               this.event.publish(
-    //                 this.config.loginConfig.updatedTokensAvailableEventKey,
-    //                 token
-    //               );
-    //               this._accessToken = token.accessToken;
-    //               this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-    //               this.refreshTokenBeforeExpire(token.accessToken);
-    //               resolve(true);
-    //             },
-    //             () => {
-    //               resolve(true);
-    //             }
-    //           );
-    //         },
-    //           () => {
-    //             reject();
-    //           }
-    //         );
-    //       } else {
-    //         reject();
-    //       }
-    //     },
-    //     () => {
-    //       reject();
-    //     }
-    //   );
-    // });
+            this.http.post(this.config.basePath2 + "/renew", { "userId": token.userId, "expiration": token.expiration }, { headers: headers }).subscribe((token: any) => {
+              this.storage.saveLocal(this.config.loginConfig.accessToken, token.accessToken); //lazy loaded modules can't wait till next refresh event
+              this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+              this.storage.saveLocal(this.config.loginConfig.refreshToken, token.refreshToken);//.then(
+                // () => {
+                  this.event.publish(
+                    this.config.loginConfig.updatedTokensAvailableEventKey,
+                    token
+                  );
+                  this._accessToken = token.accessToken;
+                  this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+                  this.refreshTokenBeforeExpire(token.accessToken);
+                  resolve(true);
+                },
+                () => {
+                  resolve(true);
+                }
+              );
+            // },
+            //   () => {
+            //     reject();
+            //   }
+            // );
+          } else {
+            this.event.publish(this.config.loginConfig.logoutEventKey);
+          }
+        //},
+        // () => {
+        //   reject();
+        // }
+      //);
+    });
   }
 
   /**
@@ -186,19 +188,21 @@ export class UserProvider {
  * @returns {*}
  * @memberof LoginProvider
  */
-  private getValueFromToken(token: string, key: ACCESS_TOKEN_KEYS): any {
+  private getValueFromToken(token: any, key: ACCESS_TOKEN_KEYS): any {
     if (!token) {
       return null;
     }
 
-    let helper: JwtHelperService = new JwtHelperService();
-    let payload = helper.decodeToken(token);
-    return payload[key];
+    // let helper: JwtHelperService = new JwtHelperService();
+    // let payload = helper.decodeToken(token);
+    // return payload[key];
+    return token.expiration;
   }
 
   private refreshTokenBeforeExpire(token) {
-    let jwtHelper: JwtHelperService = new JwtHelperService();
-    let expTime = jwtHelper.getTokenExpirationDate(token);
+    // let jwtHelper: JwtHelperService = new JwtHelperService();
+    // let expTime = jwtHelper.getTokenExpirationDate(token);
+    let expTime = new Date(token.expiration);
     let diff = expTime.getTime() - new Date().getTime() - 60 * 1000;
     console.log("Refresh starts in ", diff);
     if (!this.refreshUpdateStarted) {
