@@ -1,4 +1,1 @@
-# Advertisement application for a friend in Ionic 3 and Angular 5
-
-# MechanicApp
-
+# Test application with microservices for university exam
