@@ -1,3 +1,5 @@
+import { ACCESS_TOKEN_KEYS, UserProvider } from './../../user/user.provider';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Injectable, Inject } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
@@ -24,7 +26,7 @@ export class AddAuthInterceptor implements HttpInterceptor {
    */
   private _accessToken: string;
 
-  constructor(private events: Events, @Inject(APP_CONFIG_TOKEN) private config: AppConfig) {
+  constructor(private events: Events, @Inject(APP_CONFIG_TOKEN) private config: AppConfig, private userProvider: UserProvider) {
 
     this.subscribeToUpdatedTokensAvailableEvent();
 
@@ -41,15 +43,31 @@ export class AddAuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log("Intercepting:", req);
 
-    if (req.url.startsWith(this.config.basePath2)) {
-      req = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${this._accessToken}`
-        }
-      });
+    if (req.url.startsWith(this.config.basePath)) {
+      let helper: JwtHelperService = new JwtHelperService();
+      let payload = helper.decodeToken(this._accessToken);
+      if (payload[ACCESS_TOKEN_KEYS.EXPIRATION_TIME] < new Date()) {
+        this.userProvider.autoLogin().then(result => {
+          req = req.clone({
+            setHeaders: {
+              Authorization: `Bearer ${this._accessToken}`
+            }
+          });
+          return next.handle(req);
+        }).catch(error => {
+          console.error("Error on renew access token.");
+        });
+      } else {
+        req = req.clone({
+          setHeaders: {
+            Authorization: `Bearer ${this._accessToken}`
+          }
+        });
+        return next.handle(req);
+      }
+    } else {
+      return next.handle(req);
     }
-
-    return next.handle(req);
   }
 
 

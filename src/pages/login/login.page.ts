@@ -54,15 +54,15 @@ export class LoginPage {
    * @memberof LoginPage
    */
   ionViewDidEnter() {
-    this.userProvider.autoLogin().then(
-      () => {
-        console.log("autologin successful");
-        this.navCtrl.setRoot("MessagesPage");
-      },
-      () => {
-        console.log("Autologin failed");
-      }
-    );
+    // this.userProvider.autoLogin().then(
+    //   () => {
+    //     console.log("autologin successful");
+    //     this.navCtrl.setRoot("MessagesPage");
+    //   },
+    //   () => {
+    //     console.log("Autologin failed");
+    //   }
+    // );
   }
 
   /**

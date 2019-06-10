@@ -88,7 +88,7 @@ export const CONFIG_DEFAULT: AppConfig = {
 
   basePath: 'http://ec2-3-14-66-141.us-east-2.compute.amazonaws.com:8080/app',
 
-  basePath2: 'http://basepath2',
+  basePath2: 'http://userauthenticationservice-env.viwbvxtbrz.us-east-2.elasticbeanstalk.com',
 
   configChangedEvent: 'config:changed',
 

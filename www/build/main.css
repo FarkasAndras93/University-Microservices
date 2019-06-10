@@ -26037,6 +26037,44 @@ simple-app-header .clear-btn.button-ios {
   padding: 0 .5em;
 }
 
+login .remember-me {
+  text-align: center;
+}
+
+login .remember-me .item-inner {
+  display: block;
+}
+
+login .remember-me .input-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+login .remember-me ion-label {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+}
+
+login .remember-me ion-toggle {
+  padding: 0;
+}
+
+login .remember-me ion-toggle .toggle-icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+login .remember-me ion-toggle.toggle-md .toggle-icon {
+  width: 36px;
+  height: 14px;
+}
+
+login .remember-me ion-toggle.toggle-ios .toggle-icon {
+  width: 51px;
+  height: 32px;
+}
+
 messages table, messages th, messages td {
   border: 1px solid black;
 }

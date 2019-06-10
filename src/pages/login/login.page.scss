@@ -1,3 +1,39 @@
 login {
-
+      .remember-me {
+        text-align: center;
+    
+        .item-inner {
+          display: block;
+        }
+        .input-wrapper {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        ion-label {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 16px;
+        }
+        ion-toggle {
+          padding: 0;
+    
+          .toggle-icon {
+            display: inline-block;        
+            vertical-align: middle;
+          }
+    
+          &.toggle-md {
+            .toggle-icon {
+              width: 36px;
+              height: 14px;
+            }
+          }
+          &.toggle-ios {
+            .toggle-icon {
+              width: 51px;
+              height: 32px;
+            }
+          }
+        }
+      }
 }

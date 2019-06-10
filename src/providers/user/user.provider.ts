@@ -28,29 +28,30 @@ export class UserProvider {
   }
 
   //TODO - encode in md5 the password
-  login(username: string, password: string): Promise<User> {
-    let hash = Md5.hashStr("password");
-    this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, { accessToken: "asd" });
-    return Promise.resolve(new User("Name1", "Username2", ""));
+  login(username: string, password: string): Promise<any> {
+    // let hash = Md5.hashStr("password");
+    // this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+    // this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, { accessToken: "asd" });
+    // return Promise.resolve(new User("Name1", "Username2", ""));
 
-    // return new Promise((resolve, reject) => {
-    //   let headers = new HttpHeaders();
-    //   headers.append('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      let headers = new HttpHeaders();
+      headers.append('Content-Type', 'application/json');
 
-    //   this.http.post(this.config.basePath2 + "/login",
-    //     { "username": username, "password": hash.toString() }, { headers: headers }
-    //   ).subscribe((token: any) => {
-          //  this._accessToken = token.accessToken;
-    //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-    //     this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, token);
-    //     this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-    //     this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
-    //     return resolve(loggedUser);
-    //   }, error => {
-    //     console.error("Error while loggin in application", error);
-    //     return reject(error);
-    //   });
-    // });
+      this.http.post(this.config.basePath2 + "/login",
+        { "username": username, "password": password }, { headers: headers }
+      ).subscribe((token: any) => {
+           this._accessToken = token.accessToken;
+        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        this.event.publish(this.config.loginConfig.updatedTokensAvailableEventKey, token);
+        this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
+        return resolve(token);
+      }, error => {
+        console.error("Error while loggin in application", error);
+        return reject(error);
+      });
+    });
   }
 
   //TODO - encode in md5 the password
@@ -62,7 +63,7 @@ export class UserProvider {
     //   let headers = new HttpHeaders();
     //   headers.append('Content-Type', 'application/json');
 
-    //   this.http.post(this.config.basePath2 + "/register",
+    //   this.http.put(this.config.basePath2 + "/register",
     //     { "name": name, "username": username, "password": hash }, { headers: headers }
     //   ).subscribe((loggedUser: any) => {
     //     this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
@@ -115,6 +116,7 @@ export class UserProvider {
    * @memberof LoginProvider
    */
   public async autoLogin(): Promise<boolean> {
+    this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
     return Promise.resolve(true);
 
     // return new Promise<boolean>((resolve, reject) => {
