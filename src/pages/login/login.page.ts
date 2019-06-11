@@ -54,15 +54,15 @@ export class LoginPage {
    * @memberof LoginPage
    */
   ionViewDidEnter() {
-    // this.userProvider.autoLogin().then(
-    //   () => {
-    //     console.log("autologin successful");
-    //     this.navCtrl.setRoot("MessagesPage");
-    //   },
-    //   () => {
-    //     console.log("Autologin failed");
-    //   }
-    // );
+    if(!GlobalUtils.isEmpty(this.storage.getLocal(this.config.loginConfig.refreshToken))) {
+      this.autologin = true;
+      this.userProvider.autoLogin(false).then(() => {
+        console.log("autologin successful");
+        this.navCtrl.setRoot("MessagesPage");
+      }, () => {
+        console.log("Autologin failed");
+      });
+    };
   }
 
   /**
@@ -77,14 +77,14 @@ export class LoginPage {
         this.navCtrl.setRoot("MessagesPage");
         return response;
       }, error => {
-          console.log("Error on login: " + error);
-          if (error.status === 401) {
-            this.toast.showErrorMessage("Login data is not valid!");
-          } else {
-            this.toast.showErrorMessage("Unkown error on login!");
-          }
-          return error;
-        })
+        console.log("Error on login: " + error);
+        if (error.status === 401) {
+          this.toast.showErrorMessage("Login data is not valid!");
+        } else {
+          this.toast.showErrorMessage("Unkown error on login!");
+        }
+        return error;
+      })
   }
 
   /**

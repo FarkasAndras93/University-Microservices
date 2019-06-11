@@ -86,7 +86,7 @@ export const CONFIG_DEFAULT: AppConfig = {
   offlineEventKey: 'system:offline',
   onlineEventKey: 'system:online',
 
-  basePath: 'http://ec2-3-14-66-141.us-east-2.compute.amazonaws.com:8080/app',
+  basePath: 'http://messagesapp-env.xr4325pfap.us-east-2.elasticbeanstalk.com',
 
   basePath2: 'http://userauthenticationservice-env.viwbvxtbrz.us-east-2.elasticbeanstalk.com',
 

@@ -9,7 +9,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { JwtHelperService } from "@auth0/angular-jwt";
 
 export enum ACCESS_TOKEN_KEYS {
-  USER_ID = "userId",
+  USER_ID = "jti",
   EXPIRATION_TIME = "exp"
 }
 
@@ -25,6 +25,7 @@ export class UserProvider {
   constructor(public http: HttpClient, private event: Events, @Inject(APP_CONFIG_TOKEN) private config: AppConfig,
     private storage: StorageProvider) {
     console.log('Hello RestProvider Provider');
+    this.event.subscribe(this.config.loginConfig.logoutEventKey, this.logoutEventComplete);
   }
 
   //TODO - encode in md5 the password
@@ -68,8 +69,8 @@ export class UserProvider {
       this.http.put(this.config.basePath2 + "/register",
         { "name": name, "username": username, "password": password }, { headers: headers }
       ).subscribe((result: boolean) => {
-        this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-        this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+        // this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+        // this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
         // this.storage.saveLocal(this.config.loginConfig.loggedInUser, loggedUser);
         return resolve(result);
       }, error => {
@@ -117,49 +118,50 @@ export class UserProvider {
    * @returns {Promise<boolean>} Token response
    * @memberof LoginProvider
    */
-  public async autoLogin(): Promise<boolean> {
+  public async autoLogin(logout: boolean = true): Promise<boolean> {
     // this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
     // return Promise.resolve(true);
 
     return new Promise<boolean>((resolve, reject) => {
-      let token = this.storage.getLocal(this.config.loginConfig.refreshToken);//.then(
+      let token: string = this.storage.getLocal(this.config.loginConfig.refreshToken);//.then(
       //  token => {
-          console.log("refresher token stored", token);
-          if (token != undefined && token != null && new Date(this.getValueFromToken(token, ACCESS_TOKEN_KEYS.EXPIRATION_TIME)) > new Date()) {
-            console.log("Asking for new refresher token");
-            let headers = new HttpHeaders();
-            headers.append('Content-Type', 'application/json');
-
-            this.http.post(this.config.basePath2 + "/renew", { "userId": token.userId, "expiration": token.expiration }, { headers: headers }).subscribe((token: any) => {
-              this.storage.saveLocal(this.config.loginConfig.accessToken, token.accessToken); //lazy loaded modules can't wait till next refresh event
-              this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
-              this.storage.saveLocal(this.config.loginConfig.refreshToken, token.refreshToken);//.then(
-                // () => {
-                  this.event.publish(
-                    this.config.loginConfig.updatedTokensAvailableEventKey,
-                    token
-                  );
-                  this._accessToken = token.accessToken;
-                  this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
-                  this.refreshTokenBeforeExpire(token.accessToken);
-                  resolve(true);
-                },
-                () => {
-                  resolve(true);
-                }
-              );
-            // },
-            //   () => {
-            //     reject();
-            //   }
-            // );
-          } else {
-            this.event.publish(this.config.loginConfig.logoutEventKey);
+      console.log("refresher token stored", token);
+      if (token != undefined && token != null && new Date(this.getValueFromToken(token, ACCESS_TOKEN_KEYS.EXPIRATION_TIME)) > new Date()) {
+        console.log("Asking for new refresher token");
+        let headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json');
+        this.http.post(this.config.basePath2 + "/renew", token, { headers: headers }).subscribe((token: any) => {
+          this.storage.saveLocal(this.config.loginConfig.accessToken, token.accessToken); //lazy loaded modules can't wait till next refresh event
+          this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, true);
+          // this.storage.saveLocal(this.config.loginConfig.refreshToken, token.refreshToken);//.then(
+          // () => {
+          this.event.publish(
+            this.config.loginConfig.updatedTokensAvailableEventKey,
+            token
+          );
+          this._accessToken = token.accessToken;
+          this.event.publish(this.config.loginConfig.loggedInCompleteEventKey);
+          this.refreshTokenBeforeExpire(token.accessToken);
+          resolve(true);
+        },
+          () => {
+            reject(false);
           }
-        //},
-        // () => {
-        //   reject();
-        // }
+        );
+        // },
+        //   () => {
+        //     reject();
+        //   }
+        // );
+      } else {
+        if (logout) {
+          this.event.publish(this.config.loginConfig.logoutEventKey);
+        }
+      }
+      //},
+      // () => {
+      //   reject();
+      // }
       //);
     });
   }
@@ -171,14 +173,18 @@ export class UserProvider {
    * @returns {*}
    * @memberof LoginProvider
    */
-  private getValueFromAccessToken(key: ACCESS_TOKEN_KEYS): any {
+  public getValueFromAccessToken(key: ACCESS_TOKEN_KEYS): any {
     if (!this._accessToken) {
       return null;
     }
 
     let helper: JwtHelperService = new JwtHelperService();
     let payload = helper.decodeToken(this._accessToken);
-    return payload[key];
+    if (key == ACCESS_TOKEN_KEYS.EXPIRATION_TIME) {
+      return payload[key] * 1000;
+    } else {
+      return payload[key];
+    }
   }
 
   /**
@@ -193,24 +199,54 @@ export class UserProvider {
       return null;
     }
 
-    // let helper: JwtHelperService = new JwtHelperService();
-    // let payload = helper.decodeToken(token);
-    // return payload[key];
-    return token.expiration;
+    let helper: JwtHelperService = new JwtHelperService();
+    let payload = helper.decodeToken(token);
+    if (key == ACCESS_TOKEN_KEYS.EXPIRATION_TIME) {
+      return payload[key] * 1000;
+    } else {
+      return payload[key];
+    }
+    // return token.expiration;
   }
 
   private refreshTokenBeforeExpire(token) {
-    // let jwtHelper: JwtHelperService = new JwtHelperService();
-    // let expTime = jwtHelper.getTokenExpirationDate(token);
-    let expTime = new Date(token.expiration);
+    let jwtHelper: JwtHelperService = new JwtHelperService();
+    let expTime = jwtHelper.getTokenExpirationDate(token);
+    // let expTime = new Date(token.expiration);
     let diff = expTime.getTime() - new Date().getTime() - 60 * 1000;
     console.log("Refresh starts in ", diff);
     if (!this.refreshUpdateStarted) {
       this.refreshUpdateStarted = true;
       this.refreshTokenUpdater = setTimeout(() => {
         this.refreshUpdateStarted = false;
-        this.autoLogin();
+        this.autoLogin().catch(error => {
+          this.event.publish(this.config.loginConfig.logoutEventKey);
+        });
       }, diff);
+    }
+  }
+
+  /**
+   * Tells if the user is logged in.
+   *
+   * @returns {boolean}
+   *
+   * @memberof LoginProvider
+   */
+  public isLoggedIn(): boolean {
+    return this._accessToken != null;
+  }
+
+  /**
+  * Methods after logout was completed.
+  *
+  * @private
+  * @memberof MyApp
+  */
+  private logoutEventComplete = () => {
+    this._accessToken = undefined;
+    if (this.refreshTokenUpdater) {
+      clearTimeout(this.refreshTokenUpdater);
     }
   }
 }

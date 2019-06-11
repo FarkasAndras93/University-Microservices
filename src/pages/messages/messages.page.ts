@@ -37,12 +37,15 @@ export class MessagesPage {
 
   constructor(public navCtrl: NavController, public messageProvider: MessageProvider, public modalCtrl: ModalController, private toast: ToastProvider, private alertCtrl: AlertController,
     private storage: StorageProvider) {
-    this.headerModel = new HeaderModel(MENU_TITLE.CONTACT, HEADER_COLORS.BASE, true, new ButtonModel(undefined, undefined, undefined, undefined, HEADER_BUTTON_TYPE.MENU_TOGGLE.toString()));
+    this.headerModel = new HeaderModel(MENU_TITLE.MESSAGES, HEADER_COLORS.BASE, true, new ButtonModel(undefined, undefined, undefined, undefined, HEADER_BUTTON_TYPE.MENU_TOGGLE.toString()));
   }
 
   ionViewDidLoad() {
     this.messageProvider.getMessagesForUser().then(message => {
       this.messages = message;
+    }).catch(error => {
+      console.error(error);
+      this.toast.showErrorMessage("Error while geting messages for the logged user.");
     })
   }
 

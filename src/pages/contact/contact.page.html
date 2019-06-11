@@ -8,7 +8,7 @@
       <ion-item>
         <ion-label class="label-auto">Company:</ion-label>
         <ion-select [(ngModel)]="message.userId" multiple="false" cancelText="Cancel" okText="Save">
-          <ion-option value="{{user.id}}" *ngFor="let user of users">{{user.name}}</ion-option>
+          <ion-option value="{{user.userId}}" *ngFor="let user of users">{{user.name}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>

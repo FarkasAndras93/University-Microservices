@@ -26037,6 +26037,15 @@ simple-app-header .clear-btn.button-ios {
   padding: 0 .5em;
 }
 
+messages table, messages th, messages td {
+  border: 1px solid black;
+}
+
+messages th, messages td {
+  padding: 15px;
+  text-align: left;
+}
+
 login .remember-me {
   text-align: center;
 }

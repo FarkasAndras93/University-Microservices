@@ -44,27 +44,12 @@ export class AddAuthInterceptor implements HttpInterceptor {
     console.log("Intercepting:", req);
 
     if (req.url.startsWith(this.config.basePath)) {
-      let helper: JwtHelperService = new JwtHelperService();
-      let payload = helper.decodeToken(this._accessToken);
-      if (payload[ACCESS_TOKEN_KEYS.EXPIRATION_TIME] < new Date()) {
-        this.userProvider.autoLogin().then(result => {
-          req = req.clone({
-            setHeaders: {
-              Authorization: `Bearer ${this._accessToken}`
-            }
-          });
-          return next.handle(req);
-        }).catch(error => {
-          console.error("Error on renew access token.");
-        });
-      } else {
-        req = req.clone({
-          setHeaders: {
-            Authorization: `Bearer ${this._accessToken}`
-          }
-        });
-        return next.handle(req);
-      }
+      req = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this._accessToken}`
+        }
+      });
+      return next.handle(req);
     } else {
       return next.handle(req);
     }

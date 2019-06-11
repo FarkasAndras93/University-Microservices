@@ -1,10 +1,11 @@
+import { AddAuthInterceptor } from './../providers/tehnical/interceptors/add-auth.provider';
 import { MessageProvider } from './../providers/message/message.provider';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MyApp } from './app.component';
 import { ToastProvider } from '../providers/tehnical/toast/toast.provider';
 import { UserProvider } from '../providers/user/user.provider';
@@ -41,6 +42,11 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     ToastProvider,
     // GroceryListProvider,
     UserProvider,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddAuthInterceptor,
+      multi: true,
+    },
     MessageProvider,
     { provide: StorageProvider, useClass: StorageProviderLocal },
     { provide: APP_CONFIG_TOKEN, useValue: CONFIG_DEFAULT },

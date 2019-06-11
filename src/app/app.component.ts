@@ -1,3 +1,5 @@
+import { LoginPage } from './../pages/login/login.page';
+import { UserProvider } from './../providers/user/user.provider';
 import { LanguageModel } from './../model/frontend/common/LanguageModel';
 import { Component, ViewChild, Inject } from '@angular/core';
 import { Platform, Nav, Events } from 'ionic-angular';
@@ -72,6 +74,8 @@ export class MyApp {
     * @memberof MyApp
     */
   private adminPages: Array<SideMenuItem> = [
+    { title: MENU_TITLE.MESSAGES, component: 'MessagesPage', icon: 'mail'},
+    { title: MENU_TITLE.HOME, component: 'HomePage', icon: 'home'},
     { title: MENU_TITLE.LOGOUT, component: 'LoginPage', icon: 'log-out' }
   ]
 
@@ -110,7 +114,7 @@ export class MyApp {
 
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private event: Events,
-    @Inject(APP_CONFIG_TOKEN) private config: AppConfig, private storage: StorageProvider,
+    @Inject(APP_CONFIG_TOKEN) private config: AppConfig, private storage: StorageProvider, private userProvider: UserProvider,
     private translate: TranslateService) {
 
     translate.setDefaultLang('en');
@@ -129,6 +133,39 @@ export class MyApp {
       this.event.subscribe(this.config.loginConfig.loggedInCompleteEventKey, this.loginEventComplete);
     });
   }
+
+    /**
+   * Lifecycle Event ngAfterViewInit used to subscribe to view changes in the navigation.
+   * This is used to react on a possible logout caused by a page refresh (F5) in the browser.
+   * On every view reload we check if we are still logged in, if not we proceed to the login page
+   * to start fresh. If AutoLogin was enabled then the user will automatically be logged in.
+   */
+  ngAfterViewInit() {
+    this.nav.viewDidLoad.subscribe(async (view) => {
+        let hasLoggedIn: boolean = await this.storage.getLocal(this.config.loginConfig.hasLoggedIn);
+        if (hasLoggedIn) {
+          if (this.userProvider.isLoggedIn()) {
+            // no need to do anything
+          } else {
+            // something has gone wrong, we should be logged in, but due to page refresh or similar
+            // a logout has taken place => Go to LoginPage for login or perform autologin
+            this.storage.saveLocal(this.config.loginConfig.hasLoggedIn, false);
+            // Only need to react if we are not on the login page anyway
+            if (!(view.instance instanceof LoginPage)) {
+              this.nav.setRoot('LoginPage');
+            }
+          }
+        } else {
+          // We have not officially logged in, but gone to one of the pages in the url
+          // this means we need to be redirected to the login page
+          // if (!(view.instance instanceof LoginPage || view.instance instanceof ConfigurationPage || view.instance instanceof ContactPage)) {
+          //   // we are not allowed to be here, so go to login page, if the systemkey is empty then go to configuration page (this happens automatically)
+          //   this.nav.setRoot('LoginPage');
+          // }
+        }
+    });
+  }
+
 
   /**
    *  Visibilitychange event is removed on destroy.
